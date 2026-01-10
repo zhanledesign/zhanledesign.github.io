@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>詹乐的设计工坊 | 极简作品集</title>
+    <style>
+        /* Apple 风格设计系统 */
+        :root {
+            --apple-bg: #ffffff;
+            --apple-secondary-bg: #f5f5f7;
+            --apple-text: #1d1d1f;
+            --apple-gray: #86868b;
+            --apple-link: #0066cc;
+            --card-radius: 22px;
+            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--apple-bg);
+            color: var(--apple-text);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 导航栏 - 磨砂效果 */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; height: 50px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: saturate(180%) blur(20px);
+            z-index: 9999;
+            display: flex; justify-content: center;
+            border-bottom: 0.5px solid rgba(0,0,0,0.1);
+        }
+
+        .nav-content {
+            width: 100%; max-width: 1000px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 22px;
+        }
+
+        .nav-content a {
+            text-decoration: none; color: var(--apple-text);
+            font-size: 14px; opacity: 0.8; transition: opacity 0.3s;
+        }
+
+        .nav-content a:hover { opacity: 1; }
+        .logo { font-weight: 600; font-size: 17px !important; }
+
+        /* Hero 区域 */
+        .hero {
+            padding: 160px 22px 100px;
+            text-align: center;
+            background: var(--apple-bg);
+        }
+
+        .hero-label {
+            font-size: 18px; font-weight: 600;
+            color: var(--apple-gray); margin-bottom: 12px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: 700; letter-spacing: -0.03em;
+            line-height: 1.1; margin-bottom: 24px;
+        }
+
+        .hero p {
+            font-size: clamp(18px, 3vw, 24px);
+            color: var(--apple-gray); max-width: 600px; margin: 0 auto;
+        }
+
+        /* 作品网格 */
+        .work-container {
+            max-width: 1100px; margin: 0 auto; padding: 0 22px 100px;
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+        }
+
+        .project-card {
+            background: var(--apple-secondary-bg);
+            border-radius: var(--card-radius);
+            min-height: 450px; overflow: hidden;
+            position: relative; cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .project-card:hover { transform: scale(0.985); }
+
+        .project-card.featured { grid-column: span 2; min-height: 550px; }
+
+        .project-info {
+            position: absolute; top: 40px; left: 40px; z-index: 10;
+        }
+
+        .project-info h3 { font-size: 24px; font-weight: 600; }
+        .project-info p { color: var(--apple-gray); font-size: 16px; }
+
+        .project-img {
+            width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-img { transform: scale(1.05); }
+
+        /* 联系区域 */
+        .contact-section {
+            background: var(--apple-secondary-bg);
+            padding: 120px 22px; text-align: center;
+        }
+
+        .contact-section h2 { font-size: 42px; margin-bottom: 16px; letter-spacing: -0.02em; }
+        .contact-section p { color: var(--apple-gray); margin-bottom: 32px; font-size: 18px; }
+
+        .email-link {
+            font-size: 24px; color: var(--apple-link);
+            text-decoration: none; font-weight: 500;
+        }
+
+        .email-link:hover { text-decoration: underline; }
+
+        .social { margin-top: 40px; }
+        .social a { margin: 0 15px; text-decoration: none; color: var(--apple-text); font-size: 14px; opacity: 0.6; }
+
+        footer {
+            padding: 40px 22px; text-align: center;
+            font-size: 12px; color: var(--apple-gray);
+        }
+
+        @media (max-width: 734px) {
+            .work-container { grid-template-columns: 1fr; }
+            .project-card.featured { grid-column: span 1; min-height: 400px; }
+            .hero { padding-top: 100px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-content">
+            <a href="#" class="logo">詹乐.</a>
+            <div class="nav-links">
+                <a href="#work">作品项目</a>
+                <a href="#contact">联络我</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <span class="hero-label">设计工坊</span>
+        <h1>詹乐的设计工坊</h1>
+        <p>探索数字边界，坚持纯粹的极简美学。</p>
+    </header>
+
+    <section id="work" class="work-container">
+        <div class="project-card featured">
+            <div class="project-info">
+                <h3>品牌视觉 2026</h3>
+                <p>视觉身份设计 & 策略</p>
+            </div>
+            <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80');"></div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-info">
+                <h3>极简应用界面</h3>
+                <p>iOS 开发 / UI 设计</p>
+            </div>
+            <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80');"></div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-info">
+                <h3>交互体验研究</h3>
+                <p>用户研究</p>
+            </div>
+            <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&w=800&q=80');"></div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>詹乐正在寻找新的灵感</h2>
+        <p>如果你有关于设计的项目或想法，请随时联系。</p>
+        <a href="mailto:hello@zhanle.com" class="email-link">hello@zhanle.com</a>
+        
+        <div class="social">
+            <a href="#">WeChat</a>
+            <a href="#">Dribbble</a>
+            <a href="#">GitHub</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 詹乐的设计工坊. 所有的像素都经过精心雕琢。</p>
+    </footer>
+
+</body>
+</html>
