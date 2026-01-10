@@ -130,7 +130,7 @@
 
         .nav-pill a:hover { color: var(--brand-blue); }
 
-        /* --- 通用 Section 样式 --- */
+        /* --- 关于我 (个人简介板块) --- */
         section {
             padding: 160px 8%;
             max-width: 1600px;
@@ -145,9 +145,14 @@
             font-weight: 800;
         }
 
-        /* 关于我 */
-        #about .content-wrap { max-width: 1000px; }
-        #about p {
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text p {
             font-size: clamp(26px, 4.5vw, 48px);
             color: var(--apple-dark);
             margin-bottom: 40px;
@@ -156,14 +161,34 @@
             letter-spacing: -0.04em;
         }
 
-        /* 作品展示 - 非对称布局 */
+        .about-photo-container {
+            position: relative;
+            width: 100%;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.12);
+            transition: var(--transition);
+        }
+
+        .about-photo-container:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 60px 120px rgba(0,47,167,0.15);
+        }
+
+        .about-photo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* --- 作品展示 --- */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 80px 60px;
         }
 
-        /* 第一件作品：全宽展示 */
         .card.featured {
             grid-column: 1 / -1;
             height: 80vh;
@@ -195,13 +220,10 @@
             bottom: 40px; left: 40px;
             color: #fff;
             z-index: 2;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
-        .card-info h3 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
-        .card-info p { opacity: 0.8; font-size: 18px; }
-
-        /* 联系我 */
+        /* --- 联系我 --- */
         #contact {
             text-align: left;
             background: var(--brand-blue);
@@ -228,15 +250,13 @@
             transition: var(--transition);
         }
 
-        .contact-btn:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-
         footer { padding: 60px 8%; color: var(--apple-gray); font-size: 14px; border-top: 1px solid #eee; }
 
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
+            .about-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 58px; }
             .project-grid { grid-template-columns: 1fr; }
-            .card.featured { grid-column: auto; height: 500px; }
-            .card { height: 450px; }
+            .card.featured { height: 500px; }
         }
     </style>
 </head>
@@ -251,7 +271,7 @@
         </nav>
     </div>
 
-    <!-- 首页设计 -->
+    <!-- HERO 区域 -->
     <header class="hero">
         <div class="hero-content">
             <h1>
@@ -265,31 +285,34 @@
         </div>
     </header>
 
-    <!-- 关于我 -->
+    <!-- 关于我 (个人简介) -->
     <section id="about">
-        <div class="content-wrap">
-            <h2>关于我</h2>
-            <p>我是詹乐，</p>
-            <p>追求极致感官体验的设计师。</p>
-            <p style="color: var(--apple-gray);">在这里，每一个像素都服务于直觉与纯粹。</p>
+        <h2>关于我 / About Me</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>我是詹乐，</p>
+                <p>追求极致感官体验的设计师。</p>
+                <p style="color: var(--apple-gray);">在这里，每一个像素都服务于直觉、纯粹与艺术表达。</p>
+            </div>
+            <div class="about-photo-container">
+                <!-- 已更新为你的照片：真实的_画板 1.jpg -->
+                <img src="./真实的_画板 1.jpg" alt="詹乐的照片">
+            </div>
         </div>
     </section>
 
     <!-- 作品展示 -->
     <section id="work">
-        <h2>精选作品集 / 2026</h2>
+        <h2>精选项目 / Selected Works</h2>
         <div class="project-grid">
-            <!-- 你的第一件作品 (Featured Project) -->
             <div class="card featured">
-                <!-- 这里的 URL 建议替换为你上传到 GitHub 仓库后的真实路径，例如 ./images/work1.jpg -->
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1600&q=80');"></div>
                 <div class="card-info">
-                    <h3>视觉探索 01: 几何重构</h3>
-                    <p>品牌设计 / 视觉艺术</p>
+                    <h3>视觉实验 01：空间重构</h3>
+                    <p>视觉艺术 / 3D 渲染</p>
                 </div>
             </div>
 
-            <!-- 其他作品 -->
             <div class="card">
                 <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1200&q=80');"></div>
                 <div class="card-info">
@@ -316,7 +339,7 @@
     </section>
 
     <footer>
-        <p>© 2026 ZhanLe Design Studio. All Rights Reserved.</p>
+        <p>© 2026 ZhanLe Design Studio. Crafted with Passion.</p>
     </footer>
 
 </body>
