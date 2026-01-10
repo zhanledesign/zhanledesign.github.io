@@ -168,6 +168,7 @@
             overflow: hidden;
             box-shadow: 0 40px 100px rgba(0,0,0,0.12);
             transition: var(--transition);
+            background: #f0f0f2; /* 加载占位背景 */
         }
 
         .about-photo-container:hover {
@@ -211,6 +212,7 @@
             background-size: cover;
             background-position: center;
             transition: var(--transition);
+            background-color: #eee;
         }
 
         .card:hover .card-img { transform: scale(1.05); }
@@ -295,8 +297,8 @@
                 <p style="color: var(--apple-gray);">在这里，每一个像素都服务于直觉、纯粹与艺术表达。</p>
             </div>
             <div class="about-photo-container">
-                <!-- 已更新为你的照片：真实的_画板 1.jpg -->
-                <img src="./真实的_画板 1.jpg" alt="詹乐的照片">
+                <!-- 更新为上传的照片路径 -->
+                <img src="./真实的_画板%201.jpg" alt="詹乐的照片" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #e0e0e0 0%, #cfcfcf 100%)';">
             </div>
         </div>
     </section>
