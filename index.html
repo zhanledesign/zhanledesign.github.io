@@ -1,348 +1,1639 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZhanLe Design Studio</title>
+    <title>翠陽の宿 GREEN SUN | 下諏訪温泉</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Zen+Old+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
     <style>
-        /* 核心品牌色与高级排版系统 */
         :root {
-            --brand-blue: #002FA7; /* 克莱因蓝 */
-            --apple-bg: #ffffff;
-            --apple-dark: #000000;
-            --apple-gray: #86868b;
-            --glass-bg: rgba(255, 255, 255, 0.85);
-            --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --color-primary: #1a3a2f;
+            --color-secondary: #d4af37;
+            --color-accent: #c9a227;
+            --color-bg: #f5f3ef;
+            --color-bg-warm: #faf8f5;
+            --color-text: #2c2c2c;
+            --color-text-light: #666;
+            --color-white: #ffffff;
+            --font-serif: 'Cormorant Garamond', 'Noto Serif JP', serif;
+            --font-jp: 'Zen Old Mincho', 'Noto Serif JP', serif;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
-            background-color: var(--apple-bg);
-            color: var(--apple-dark);
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
-            line-height: 1.1;
-            -webkit-font-smoothing: antialiased;
+            font-family: var(--font-jp);
+            background-color: var(--color-bg);
+            color: var(--color-text);
             overflow-x: hidden;
+            line-height: 1.8;
         }
 
-        /* --- 先锋风格 HERO 区域 --- */
-        .hero {
-            height: 100vh;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 0 8%;
-            position: relative;
-            background: #fff;
-        }
-
-        .hero-content {
-            z-index: 2;
-            width: 100%;
-        }
-
-        .hero h1 {
-            font-size: clamp(60px, 14vw, 170px);
-            font-weight: 900;
-            letter-spacing: -0.06em;
-            text-transform: uppercase;
-            line-height: 0.82;
-            margin-bottom: 50px;
-            opacity: 0;
-            transform: translateY(40px);
-            animation: heroReveal 1.2s forwards cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .hero h1 span { display: block; }
-        .hero h1 .blue-text { color: var(--brand-blue); }
-
-        .hero-meta {
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 3rem;
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
-            width: 100%;
-            max-width: 1400px;
-            opacity: 0;
-            animation: fadeIn 1s 0.6s forwards;
-        }
-
-        .hero p {
-            font-size: clamp(18px, 2.2vw, 24px);
-            color: var(--apple-gray);
-            max-width: 500px;
-            line-height: 1.4;
-            font-weight: 400;
-            letter-spacing: -0.02em;
-        }
-
-        .hero-scroll-tag {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--brand-blue);
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            writing-mode: vertical-rl;
-            position: relative;
-        }
-
-        .hero-scroll-tag::after {
-            content: '';
-            position: absolute;
-            top: 110%;
-            left: 50%;
-            width: 1px;
-            height: 40px;
-            background: var(--brand-blue);
-        }
-
-        @keyframes heroReveal { to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeIn { to { opacity: 1; } }
-
-        /* --- 底部药丸导航栏 --- */
-        .dock-container {
-            position: fixed;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 9999;
-        }
-
-        .nav-pill {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px) saturate(180%);
-            padding: 12px 35px;
-            border-radius: 100px;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            display: flex;
-            gap: 40px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-        }
-
-        .nav-pill a {
-            text-decoration: none;
-            color: var(--apple-dark);
-            font-size: 14px;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .nav-pill a:hover { color: var(--brand-blue); }
-
-        /* --- 关于我 (个人简介板块) --- */
-        section {
-            padding: 160px 8%;
-            max-width: 1600px;
-            margin: 0 auto;
-            min-height: 100vh;
-        }
-
-        h2 {
-            font-size: clamp(36px, 6vw, 72px);
-            margin-bottom: 80px;
-            letter-spacing: -0.04em;
-            font-weight: 800;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 60px;
             align-items: center;
+            transition: all 0.6s var(--transition-smooth);
         }
 
-        .about-text p {
-            font-size: clamp(26px, 4.5vw, 48px);
-            color: var(--apple-dark);
-            margin-bottom: 40px;
-            font-weight: 600;
-            line-height: 1.15;
-            letter-spacing: -0.04em;
+        .nav.scrolled {
+            background: rgba(245, 243, 239, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 3rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
 
-        .about-photo-container {
-            position: relative;
-            width: 100%;
-            border-radius: 40px;
-            overflow: hidden;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.12);
-            transition: var(--transition);
-            background: #f0f0f2; /* 加载占位背景 */
-        }
-
-        .about-photo-container:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 60px 120px rgba(0,47,167,0.15);
-        }
-
-        .about-photo-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
-
-        /* --- 作品展示 --- */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 80px 60px;
-        }
-
-        .card.featured {
-            grid-column: 1 / -1;
-            height: 80vh;
-        }
-
-        .card {
-            background: #f5f5f7;
-            border-radius: 40px;
-            height: 700px;
-            overflow: hidden;
-            position: relative;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .card:hover { transform: scale(0.99); }
-        
-        .card-img {
-            width: 100%; height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: var(--transition);
-            background-color: #eee;
-        }
-
-        .card:hover .card-img { transform: scale(1.05); }
-
-        .card-info {
-            position: absolute;
-            bottom: 40px; left: 40px;
-            color: #fff;
-            z-index: 2;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        /* --- 联系我 --- */
-        #contact {
-            text-align: left;
-            background: var(--brand-blue);
-            color: #fff;
-            border-radius: 60px;
-            margin-bottom: 140px;
+        .nav-logo {
             display: flex;
             flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .nav-logo-main {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            color: var(--color-white);
+            transition: color 0.6s;
+        }
+
+        .nav.scrolled .nav-logo-main {
+            color: var(--color-primary);
+        }
+
+        .nav-logo-sub {
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            color: var(--color-secondary);
+            margin-top: 0.2rem;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-white);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.6s;
+        }
+
+        .nav.scrolled .nav-links a {
+            color: var(--color-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: var(--color-secondary);
+            transition: all 0.4s var(--transition-smooth);
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            display: flex;
+            gap: 0.6rem;
+            color: var(--color-white);
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            transition: color 0.6s;
+        }
+
+        .nav.scrolled .lang-switch {
+            color: var(--color-primary);
+        }
+
+        .lang-btn {
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s, color 0.3s;
+        }
+
+        .lang-btn:hover {
+            opacity: 1;
+        }
+
+        .lang-btn.active {
+            opacity: 1;
+            color: var(--color-secondary);
+            font-weight: 500;
+        }
+
+        .nav-cta {
+            padding: 0.8rem 2rem;
+            border: 1px solid var(--color-secondary);
+            color: var(--color-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--color-secondary);
+            transition: left 0.4s var(--transition-smooth);
+            z-index: -1;
+        }
+
+        .nav-cta:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-cta:hover::before {
+            left: 0;
+        }
+
+        .nav.scrolled .nav-cta {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .nav.scrolled .nav-cta::before {
+            background: var(--color-primary);
+        }
+
+        .nav.scrolled .nav-cta:hover {
+            color: var(--color-white);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
             justify-content: center;
         }
 
-        #contact h2 { color: #fff; margin-bottom: 40px; line-height: 1; }
-
-        .contact-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 24px 80px;
-            background: #fff;
-            color: var(--brand-blue);
-            text-decoration: none;
-            border-radius: 100px;
-            font-size: 20px;
-            font-weight: 800;
-            transition: var(--transition);
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1920&q=80') center/cover;
+            transform: scale(1.1);
         }
 
-        footer { padding: 60px 8%; color: var(--apple-gray); font-size: 14px; border-top: 1px solid #eee; }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: var(--color-white);
+        }
+
+        .hero-location {
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            letter-spacing: 0.4em;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .btn-primary {
+            padding: 1rem 2.5rem;
+            background: var(--color-secondary);
+            color: var(--color-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            transition: all 0.4s;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 1rem 2.5rem;
+            border: 1px solid rgba(255,255,255,0.5);
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            transition: all 0.4s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--color-white);
+        }
+
+        .btn-secondary::before {
+            content: '◆';
+            font-size: 0.6rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-white);
+            opacity: 0;
+            animation: fadeInUp 1s ease 2s forwards;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--color-white), transparent);
+            animation: scrollLine 2s infinite;
+        }
+
+        @keyframes scrollLine {
+            0% { transform: scaleY(0); transform-origin: top; }
+            50% { transform: scaleY(1); transform-origin: top; }
+            50.1% { transform-origin: bottom; }
+            100% { transform: scaleY(0); transform-origin: bottom; }
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; }
+        }
+
+        /* Section Common Styles */
+        .section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            letter-spacing: 0.4em;
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            color: var(--color-primary);
+            line-height: 1.4;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--color-secondary);
+            margin: 2rem auto;
+        }
+
+        /* Concept Section */
+        .concept {
+            background: var(--color-bg-warm);
+            padding: 10rem 0;
+        }
+
+        .concept-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .concept-text {
+            font-size: 1rem;
+            line-height: 2.2;
+            color: var(--color-text-light);
+            letter-spacing: 0.05em;
+        }
+
+        /* Guest Rooms Section */
+        .rooms {
+            background: var(--color-white);
+            overflow: hidden;
+        }
+
+        .rooms-showcase {
+            position: relative;
+            margin-bottom: 4rem;
+        }
+
+        .rooms-image-main {
+            width: 100%;
+            height: 70vh;
+            object-fit: cover;
+            display: block;
+        }
+
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .room-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .room-card-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.8s var(--transition-smooth);
+        }
+
+        .room-card:hover .room-card-image {
+            transform: scale(1.05);
+        }
+
+        .room-card-content {
+            padding: 1.5rem 0;
+        }
+
+        .room-card-title {
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .room-card-spec {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            letter-spacing: 0.05em;
+        }
+
+        /* Hot Spring Section */
+        .onsen {
+            background: var(--color-primary);
+            color: var(--color-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .onsen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1540555700478-4be289fbec6b?w=1920&q=80') center/cover;
+            opacity: 0.15;
+        }
+
+        .onsen-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .onsen-header {
+            text-align: left;
+        }
+
+        .onsen-header .section-title {
+            color: var(--color-white);
+        }
+
+        .onsen-features {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .onsen-feature {
+            border-left: 2px solid var(--color-secondary);
+            padding-left: 1.5rem;
+        }
+
+        .onsen-feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .onsen-feature-text {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            opacity: 0.8;
+        }
+
+        .onsen-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .onsen-stat {
+            text-align: center;
+        }
+
+        .onsen-stat-value {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--color-secondary);
+            display: block;
+        }
+
+        .onsen-stat-label {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 0.3rem;
+        }
+
+        .onsen-image {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .onsen-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Dining Section */
+        .dining {
+            background: var(--color-bg-warm);
+        }
+
+        .dining-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .dining-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--color-white);
+            border-radius: 4px;
+            transition: all 0.4s;
+        }
+
+        .menu-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .menu-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .menu-info h3 {
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .menu-info p {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        .menu-meta {
+            margin-left: auto;
+            display: flex;
+            gap: 2rem;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        .dining-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--color-white);
+            padding: 6rem 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .service-card {
+            padding: 3rem 2rem;
+            border: 1px solid rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--color-secondary);
+            opacity: 0;
+            transition: all 0.4s;
+            transform: scale(1.1);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .service-title {
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .service-desc {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        /* Access Section */
+        .access {
+            background: var(--color-bg-warm);
+            padding: 6rem 0;
+        }
+
+        .access-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .access-info h3 {
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .access-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .access-detail {
+            margin-bottom: 2rem;
+            padding-left: 3.5rem;
+        }
+
+        .access-detail p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--color-text-light);
+        }
+
+        .access-detail .highlight {
+            color: var(--color-secondary);
+            font-weight: 500;
+        }
+
+        .access-map {
+            background: #e8e6e1;
+            height: 100%;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .access-map img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--color-white);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .map-overlay h4 {
+            font-size: 1rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .map-overlay p {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        /* Reservation Section */
+        .reservation {
+            background: var(--color-primary);
+            color: var(--color-white);
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reservation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+        }
+
+        .reservation-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .reservation .section-title {
+            color: var(--color-white);
+            margin-bottom: 1rem;
+        }
+
+        .reservation-text {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .reservation-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .reservation-info {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            letter-spacing: 0.1em;
+        }
+
+        .reservation-info span {
+            margin: 0 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f1f1a;
+            color: var(--color-white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .footer-brand h2 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-brand .subtitle {
+            font-size: 0.8rem;
+            color: var(--color-secondary);
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            opacity: 0.7;
+            max-width: 300px;
+        }
+
+        .footer-links h3 {
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-secondary);
+        }
+
+        .footer-contact p {
+            font-size: 0.85rem;
+            line-height: 1.8;
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding: 2rem 2rem 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            opacity: 0.5;
+        }
+
+        .footer-bottom a {
+            color: var(--color-white);
+            text-decoration: none;
+            margin-left: 2rem;
+        }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .fade-in {
+            opacity: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .nav-links { gap: 1.5rem; }
+            .nav-right { gap: 1.5rem; }
+        }
 
         @media (max-width: 968px) {
-            .about-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 58px; }
-            .project-grid { grid-template-columns: 1fr; }
-            .card.featured { height: 500px; }
+            .nav-links { display: none; }
+            .hero-title { font-size: 2.5rem; }
+            .rooms-grid { grid-template-columns: 1fr; }
+            .onsen-content { grid-template-columns: 1fr; }
+            .access-content { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; gap: 2rem; }
+            .services-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 底部药丸导航栏 -->
-    <div class="dock-container">
-        <nav class="nav-pill">
-            <a href="#about">关于我</a>
-            <a href="#work">作品展示</a>
-            <a href="#contact">联系我</a>
-        </nav>
-    </div>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-logo">
+            <div class="nav-logo-main">GREEN SUN</div>
+            <div class="nav-logo-sub" data-i18n="nav_logo_sub">翠陽の宿</div>
+        </div>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="#rooms" data-i18n="nav_rooms">客室</a></li>
+                <li><a href="#onsen" data-i18n="nav_onsen">温泉</a></li>
+                <li><a href="#dining" data-i18n="nav_dining">料理</a></li>
+                <li><a href="#access" data-i18n="nav_access">交通</a></li>
+            </ul>
+            <div class="lang-switch">
+                <span class="lang-btn active" onclick="switchLang('ja')">JP</span>
+                <span style="opacity: 0.3">|</span>
+                <span class="lang-btn" onclick="switchLang('zh')">ZH</span>
+                <span style="opacity: 0.3">|</span>
+                <span class="lang-btn" onclick="switchLang('en')">EN</span>
+            </div>
+            <a href="#reservation" class="nav-cta" data-i18n="nav_cta">预订住宿</a>
+        </div>
+    </nav>
 
-    <!-- HERO 区域 -->
-    <header class="hero">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg" id="heroBg"></div>
         <div class="hero-content">
-            <h1>
-                <span>ZhanLe</span>
-                <span class="blue-text">Design Studio</span>
-            </h1>
-            <div class="hero-meta">
-                <p>探索数字设计的纯粹边界，用极简主义重绘品牌感官与交互的深度。</p>
-                <div class="hero-scroll-tag">Scroll Exploration</div>
+            <p class="hero-location">SHIMOSUWA, NAGANO</p>
+            <h1 class="hero-title" data-i18n="hero_title">翠陽の宿</h1>
+            <p class="hero-subtitle" data-i18n="hero_subtitle">下諏訪温泉・源泉かけ流し</p>
+            <div class="hero-buttons">
+                <a href="#rooms" class="btn-primary" data-i18n="btn_rooms">查看客房</a>
+                <a href="#" class="btn-secondary" data-i18n="btn_tour">虚拟导览</a>
             </div>
         </div>
-    </header>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+        </div>
+    </section>
 
-    <!-- 关于我 (个人简介) -->
-    <section id="about">
-        <h2>关于我 / About Me</h2>
-        <div class="about-grid">
-            <div class="about-text">
-                <p>我是詹乐，</p>
-                <p>追求极致感官体验的设计师。</p>
-                <p style="color: var(--apple-gray);">在这里，每一个像素都服务于直觉、纯粹与艺术表达。</p>
+    <!-- Concept Section -->
+    <section class="concept" id="concept">
+        <div class="concept-content">
+            <div class="section-header fade-up">
+                <span class="section-label">CONCEPT</span>
+                <h2 class="section-title" data-i18n="concept_title">諏訪の自然と温泉に包まれる<br>静寂な時間</h2>
+                <div class="section-divider"></div>
             </div>
-            <div class="about-photo-container">
-                <!-- 更新为上传的照片路径 -->
-                <img src="./真实的_画板 1.jpg" alt="詹乐的照片" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #e0e0e0 0%, #cfcfcf 100%)';">
+            <p class="concept-text fade-up" data-i18n="concept_text">
+                JR中央本線「下諏訪駅」から徒歩1分。諏访湖を望む絶景の地に佇む、<br>
+                全室源泉かけ流しの貸切温泉付きプライベートリゾート。<br>
+                ビジネスと観光の拠点として、心身ともに癒される上質な滞在をお約束いたします。
+            </p>
+        </div>
+    </section>
+
+    <!-- Guest Rooms Section -->
+    <section class="rooms section" id="rooms">
+        <div class="rooms-showcase">
+            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1920&q=80" alt="客室" class="rooms-image-main fade-in">
+        </div>
+        <div class="section-header fade-up">
+            <span class="section-label">GUEST ROOMS</span>
+            <h2 class="section-title" data-i18n="rooms_header">客室</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="rooms-content fade-up" style="max-width: 800px; margin: 0 auto 4rem; padding: 0 2rem; text-align: center;">
+            <p style="line-height: 2; color: var(--color-text-light); margin-bottom: 2rem;" data-i18n="rooms_desc">
+                2025年に全面リニューアルした「メロディールーム」をはじめ、<br>
+                全室に高級オルゴール『ORPHEUS KARDIA』を設置。<br>
+                美しい旋律と共に、極上の癒しの時間をお過ごしください。
+            </p>
+            <ul style="list-style: none; text-align: left; max-width: 400px; margin: 0 auto; color: var(--color-text-light); font-size: 0.9rem;">
+                <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-secondary);">•</span>
+                    <span data-i18n="room_feature_1">全室源泉かけ流し温泉付き</span>
+                </li>
+                <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-secondary);">•</span>
+                    <span data-i18n="room_feature_2">ORPHEUS KARDIA オルゴール設置</span>
+                </li>
+                <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--color-secondary);">•</span>
+                    <span data-i18n="room_feature_3">諏訪湖側・山側の絶景ビュー</span>
+                </li>
+            </ul>
+            <a href="#" style="display: inline-block; margin-top: 2rem; color: var(--color-primary); text-decoration: none; border-bottom: 1px solid var(--color-primary); padding-bottom: 0.3rem; font-size: 0.9rem;" data-i18n="room_detail_link">客室詳細を見る →</a>
+        </div>
+        <div class="rooms-grid">
+            <div class="room-card fade-up">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80" alt="メロディールーム" class="room-card-image">
+                <div class="room-card-content">
+                    <h3 class="room-card-title" data-i18n="room1_title">メロディールーム</h3>
+                    <p class="room-card-spec" data-i18n="room1_spec">ツイン/ダブル | 32㎡</p>
+                </div>
+            </div>
+            <div class="room-card fade-up">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="スタンダード" class="room-card-image">
+                <div class="room-card-content">
+                    <h3 class="room-card-title" data-i18n="room2_title">スタンダード</h3>
+                    <p class="room-card-spec" data-i18n="room2_spec">シングル/ツイン | 25㎡</p>
+                </div>
+            </div>
+            <div class="room-card fade-up">
+                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80" alt="和室" class="room-card-image">
+                <div class="room-card-content">
+                    <h3 class="room-card-title" data-i18n="room3_title">和室</h3>
+                    <p class="room-card-spec" data-i18n="room3_spec">10畳 | 45㎡</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 作品展示 -->
-    <section id="work">
-        <h2>精选项目 / Selected Works</h2>
-        <div class="project-grid">
-            <div class="card featured">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1600&q=80');"></div>
-                <div class="card-info">
-                    <h3>视觉实验 01：空间重构</h3>
-                    <p>视觉艺术 / 3D 渲染</p>
+    <!-- Hot Spring Section -->
+    <section class="onsen section" id="onsen">
+        <div class="onsen-content">
+            <div class="onsen-left">
+                <div class="section-header onsen-header fade-up">
+                    <span class="section-label">HOT SPRING</span>
+                    <h2 class="section-title" data-i18n="onsen_header">源泉かけ流し温泉</h2>
+                    <p style="margin-top: 1rem; opacity: 0.8; font-size: 0.95rem; line-height: 1.8;" data-i18n="onsen_desc">
+                        下諏訪の豊かな自然が育んだ天然温泉を、<br>
+                        完全貸切のプライベート空間でお楽しみください。
+                    </p>
+                </div>
+                <div class="onsen-features fade-up">
+                    <div class="onsen-feature">
+                        <h3 class="onsen-feature-title" data-i18n="onsen_feature1_t">貸切温泉</h3>
+                        <p class="onsen-feature-text" data-i18n="onsen_feature1_p">
+                            他のお客様とご一緒することなく、ご家族やカップルで<br>
+                            ゆっくりと温泉を楽しめる完全個室の温泉浴场。<br>
+                            24時間ご利用いただけます。
+                        </p>
+                    </div>
+                    <div class="onsen-feature">
+                        <h3 class="onsen-feature-title" data-i18n="onsen_feature2_t">メロディールーム専用</h3>
+                        <p class="onsen-feature-text" data-i18n="onsen_feature2_p">
+                            メロディールームご宿泊のお客様専用の特別な温泉と<br>
+                            リラクゼーションルームをご用意。<br>
+                            さらなる上質な癒しの時間を提供いたします。
+                        </p>
+                    </div>
+                </div>
+                <div class="onsen-stats fade-up">
+                    <div class="onsen-stat">
+                        <span class="onsen-stat-value">pH8.2</span>
+                        <span class="onsen-stat-label" data-i18n="onsen_stat1">弱アルカリ性</span>
+                    </div>
+                    <div class="onsen-stat">
+                        <span class="onsen-stat-value">42℃</span>
+                        <span class="onsen-stat-label" data-i18n="onsen_stat2">泉温</span>
+                    </div>
+                    <div class="onsen-stat">
+                        <span class="onsen-stat-value" data-i18n="onsen_stat3_v">美肌</span>
+                        <span class="onsen-stat-label" data-i18n="onsen_stat3">泉質</span>
+                    </div>
                 </div>
             </div>
+            <div class="onsen-image fade-up">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="温泉">
+            </div>
+        </div>
+    </section>
 
-            <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1200&q=80');"></div>
-                <div class="card-info">
-                    <h3>Minimalist Lighting</h3>
-                    <p>Product Design</p>
+    <!-- Dining Section -->
+    <section class="dining section" id="dining">
+        <div class="dining-content">
+            <div class="section-header fade-up">
+                <span class="section-label">DINING</span>
+                <h2 class="section-title" data-i18n="dining_header">朝食</h2>
+                <div class="section-divider"></div>
+            </div>
+            <p class="fade-up" style="text-align: center; margin-bottom: 3rem; color: var(--color-text-light); line-height: 1.8;" data-i18n="dining_desc">
+                八ヶ岳山麓の蕎麦粉100%にこだわった十割蕎麦をはじめ、<br>
+                長野県産の食材を使用した和朝食をご用意。<br>
+                朝7時からのご提供で、早めの出発にも対応いたします。
+            </p>
+            <div class="dining-menu fade-up">
+                <div class="menu-item">
+                    <div class="menu-icon" data-i18n="menu1_icon">蕎麦</div>
+                    <div class="menu-info">
+                        <h3 data-i18n="menu1_title">十割蕎麦セット</h3>
+                        <p data-i18n="menu1_desc">八ヶ岳产そば粉使用</p>
+                    </div>
+                    <div class="menu-meta">
+                        <span data-i18n="menu_time">◯ 7:00 - 9:00</span>
+                        <span data-i18n="menu_place">◯ 1階 レストラン</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-icon" data-i18n="menu2_icon">和食</div>
+                    <div class="menu-info">
+                        <h3 data-i18n="menu2_title">和朝食セット</h3>
+                        <p data-i18n="menu2_desc">地元产野菜と温泉卵</p>
+                    </div>
+                    <div class="menu-meta">
+                        <span data-i18n="menu_time">◯ 7:00 - 9:00</span>
+                        <span data-i18n="menu_place">◯ 1階 レストラン</span>
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80');"></div>
-                <div class="card-info">
-                    <h3>Digital Surface</h3>
-                    <p>UI UX Interface</p>
+            <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1200&q=80" alt="料理" class="dining-image fade-up">
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header fade-up">
+            <span class="section-label">SERVICES</span>
+            <h2 class="section-title" data-i18n="services_header">館内・サービス</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="services-grid">
+            <div class="service-card fade-up">
+                <div class="service-icon">⌂</div>
+                <h3 class="service-title" data-i18n="service1_title">無料駐車場</h3>
+                <p class="service-desc" data-i18n="service1_desc">20台完備</p>
+            </div>
+            <div class="service-card fade-up">
+                <div class="service-icon">⚡</div>
+                <h3 class="service-title" data-i18n="service2_title">レンタサイクル</h3>
+                <p class="service-desc" data-i18n="service2_desc">电动アシスト自転轮</p>
+            </div>
+            <div class="service-card fade-up">
+                <div class="service-icon">◷</div>
+                <h3 class="service-title" data-i18n="service3_title">フロント</h3>
+                <p class="service-desc" data-i18n="service3_desc">24時間対応</p>
+            </div>
+            <div class="service-card fade-up">
+                <div class="service-icon">🛡</div>
+                <h3 class="service-title" data-i18n="service4_title">ベストレート保証</h3>
+                <p class="service-desc" data-i18n="service4_desc">公式サイトが最安値</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section class="access" id="access">
+        <div class="section-header fade-up">
+            <span class="section-label">ACCESS</span>
+            <h2 class="section-title" data-i18n="access_header">交通案内</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="access-content">
+            <div class="access-info fade-up">
+                <div>
+                    <h3><span class="access-icon" data-i18n="access_car_icon">鉄</span><span data-i18n="access_car_title">お车でお越しの場合</span></h3>
+                    <div class="access-detail">
+                        <p data-i18n="access_car_desc">中央自动车道「诹访南IC」より约5分<br>
+                        长野自动车道「冈谷IC」より约15分<br>
+                        <span class="highlight">※無料駐車場完備（20台）</span></p>
+                    </div>
+                </div>
+                <div>
+                    <h3><span class="access-icon" data-i18n="access_train_icon">电</span><span data-i18n="access_train_title">电车でお越しの場合</span></h3>
+                    <div class="access-detail">
+                        <p data-i18n="access_train_desc">JR中央本线「下诹访駅」より徒歩1分<br>
+                        上诹访駅よりお车で约10分<br>
+                        <span class="highlight">※駅からの送迎も承ります（要予約）</span></p>
+                    </div>
+                </div>
+                <div>
+                    <h3><span class="access-icon" data-i18n="access_sight_icon">周</span><span data-i18n="access_sight_title">周辺観光</span></h3>
+                    <div class="access-detail">
+                        <p data-i18n="access_sight_desc">诹访大社（下社）秋宫・春宫：徒歩圏内<br>
+                        诹访湖：徒歩5分<br>
+                        高岛城：お车で约10分</p>
+                    </div>
+                </div>
+                <div style="margin-top: 3rem; padding: 1.5rem; background: var(--color-white); border-radius: 4px;">
+                    <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--color-primary);" data-i18n="address_title">住所</h3>
+                    <p style="font-size: 0.9rem; line-height: 1.8; color: var(--color-text-light);">
+                        〒393-0026<br>
+                        <span data-i18n="address_detail">長野県諏訪郡下諏訪町xxxxx</span><br>
+                        TEL: 0266-xx-xxxx<br>
+                        Mail: info@green-sun.jp
+                    </p>
+                </div>
+            </div>
+            <div class="access-map fade-up">
+                <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80" alt="地图">
+                <div class="map-overlay">
+                    <h4 data-i18n="map_hint">下诹访駅から徒歩1分</h4>
+                    <p data-i18n="map_sub">JR中央本线</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 联系我 -->
-    <section id="contact">
-        <h2>一起创造<br>超越视觉的作品</h2>
-        <div>
-            <a href="mailto:hello@zhanle.com" class="contact-btn">发送合作邮件</a>
+    <!-- Reservation Section -->
+    <section class="reservation" id="reservation">
+        <div class="reservation-content">
+            <span class="section-label">RESERVATION</span>
+            <h2 class="section-title" data-i18n="res_header">ご予約</h2>
+            <p class="reservation-text" data-i18n="res_desc">
+                公式サイトからのご予約で、ベストレート保証。<br>
+                最高の滞在を、最適な価格でご提供いたします。
+            </p>
+            <div class="reservation-buttons">
+                <a href="#" class="btn-primary" data-i18n="res_btn1">空室検索・予約</a>
+                <a href="#" class="btn-secondary" data-i18n="res_btn2">お問い合わせ</a>
+            </div>
+            <p class="reservation-info">
+                <span data-i18n="res_checkin">チェックイン 15:00</span> <span>|</span> <span data-i18n="res_checkout">チェックアウト 10:00</span>
+            </p>
         </div>
     </section>
 
-    <footer>
-        <p>© 2026 ZhanLe Design Studio. Crafted with Passion.</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>GREEN SUN</h2>
+                <p class="subtitle" data-i18n="footer_logo_sub">翠 陽 の 宿</p>
+                <p data-i18n="footer_desc">下諏訪の豊かな自然と温泉に包まれた、<br>静寂な時間を過ごすためのプライベートリゾート。</p>
+            </div>
+            <div class="footer-links">
+                <h3 data-i18n="footer_links_title">リンク</h3>
+                <ul>
+                    <li><a href="#rooms" data-i18n="nav_rooms">客室紹介</a></li>
+                    <li><a href="#onsen" data-i18n="nav_onsen">温泉案内</a></li>
+                    <li><a href="#dining" data-i18n="nav_dining">お料理</a></li>
+                    <li><a href="#access" data-i18n="nav_access">アクセス</a></li>
+                    <li><a href="#" data-i18n="footer_faq">よくある質問</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3 data-i18n="footer_contact_title">お問い合わせ</h3>
+                <p>TEL: 0266-xx-xxxx</p>
+                <p>FAX: 0266-xx-xxxx</p>
+                <p>info@green-sun.jp</p>
+                <p style="margin-top: 1rem;">〒393-0026<br><span data-i18n="footer_address">長野県諏訪郡下諏訪町</span></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Green Sun Hotel. All rights reserved.</p>
+            <div>
+                <a href="#" data-i18n="footer_privacy">プライバシーポリシー</a>
+                <a href="#" data-i18n="footer_terms">利用規約</a>
+            </div>
+        </div>
     </footer>
 
+    <script>
+        // --- 多语言系统数据 ---
+        const i18n = {
+            ja: {
+                nav_logo_sub: "翠陽の宿",
+                nav_rooms: "客室",
+                nav_onsen: "温泉",
+                nav_dining: "料理",
+                nav_access: "交通",
+                nav_cta: "宿泊予約",
+                hero_title: "翠陽の宿",
+                hero_subtitle: "下諏訪温泉・源泉かけ流し",
+                btn_rooms: "客室を見る",
+                btn_tour: "バーチャルツアー",
+                concept_title: "諏訪の自然と温泉に包まれる<br>静寂な時間",
+                concept_text: "JR中央本線「下諏訪駅」から徒歩1分。諏訪湖を望む絶景の地に佇む、<br>全室源泉かけ流しの貸切温泉付きプライベートリゾート。<br>ビジネスと観光の拠点として、心身ともに癒される上質な滞在をお約束いたします。",
+                rooms_header: "客室",
+                rooms_desc: "2025年に全面リニューアルした「メロディールーム」をはじめ、<br>全室に高級オルゴール『ORPHEUS KARDIA』を設置。<br>美しい旋律と共に、極上の癒しの時間をお過ごしください。",
+                room_feature_1: "全室源泉かけ流し温泉付き",
+                room_feature_2: "ORPHEUS KARDIA オルゴール設置",
+                room_feature_3: "諏訪湖側・山側の絶景ビュー",
+                room_detail_link: "客室詳細を見る →",
+                room1_title: "メロディールーム",
+                room1_spec: "ツイン/ダブル | 32㎡",
+                room2_title: "スタンダード",
+                room2_spec: "シングル/ツイン | 25㎡",
+                room3_title: "和室",
+                room3_spec: "10畳 | 45㎡",
+                onsen_header: "源泉かけ流し温泉",
+                onsen_desc: "下諏访の豊かな自然が育んだ天然温泉を、<br>完全貸切のプライベート空間でお楽しみください。",
+                onsen_feature1_t: "貸切温泉",
+                onsen_feature1_p: "他のお客様とご一緒することなく、ご家族やカップルでゆっくりと温泉を楽しめる完全個室の温泉浴场。24時間ご利用いただけます。",
+                onsen_feature2_t: "メロディールーム専用",
+                onsen_feature2_p: "メロディールームご宿泊のお客様専用の特別な温泉とリラクゼーションルームをご用意。さらなる上質な癒しの時間を提供いたします。",
+                onsen_stat1: "弱アルカリ性",
+                onsen_stat2: "泉温",
+                onsen_stat3: "泉質",
+                onsen_stat3_v: "美肌",
+                dining_header: "朝食",
+                dining_desc: "八ヶ岳山麓の蕎麦粉100%にこだわった十割蕎麦をはじめ、長野県産の食材を使用した和朝食をご用意。朝7時からのご提供で、早めの出発にも対応いたします。",
+                menu1_icon: "蕎麦",
+                menu1_title: "十割蕎麦セット",
+                menu1_desc: "八ヶ岳产そば粉使用",
+                menu2_icon: "和食",
+                menu2_title: "和朝食セット",
+                menu2_desc: "地元产野菜と温泉卵",
+                menu_time: "◯ 7:00 - 9:00",
+                menu_place: "◯ 1階 レストラン",
+                services_header: "館内・サービス",
+                service1_title: "無料駐車場",
+                service1_desc: "20台完備",
+                service2_title: "レンタサイクル",
+                service2_desc: "电动アシスト自転轮",
+                service3_title: "フロント",
+                service3_desc: "24時間対応",
+                service4_title: "ベストレート保証",
+                service4_desc: "公式サイトが最安値",
+                access_header: "交通案内",
+                access_car_icon: "鉄",
+                access_car_title: "お车でお越しの場合",
+                access_car_desc: "中央自动车道「诹访南IC」より约5分<br>长野自动车道「冈谷IC」より约15分<br><span class=\"highlight\">※無料駐車場完備（20台）</span>",
+                access_train_icon: "电",
+                access_train_title: "电车でお越しの場合",
+                access_train_desc: "JR中央本线「下诹访駅」より徒歩1分<br>上诹访駅よりお车で约10分<br><span class=\"highlight\">※駅からの送迎も承ります（要予約）</span>",
+                access_sight_icon: "周",
+                access_sight_title: "周辺観光",
+                access_sight_desc: "诹访大社（下社）秋宫・春宫：徒歩圏内<br>诹访湖：徒歩5分<br>高岛城：お车で约10分",
+                address_title: "住所",
+                address_detail: "長野県諏訪郡下諏訪町xxxxx",
+                map_hint: "下诹访駅から徒歩1分",
+                map_sub: "JR中央本线",
+                res_header: "ご予約",
+                res_desc: "公式サイトからのご予約で、ベストレート保証。<br>最高の滞在を、最適な価格でご提供いたします。",
+                res_btn1: "空室検索・予約",
+                res_btn2: "お問い合わせ",
+                res_checkin: "チェックイン 15:00",
+                res_checkout: "チェックアウト 10:00",
+                footer_logo_sub: "翠 陽 の 宿",
+                footer_desc: "下諏訪の豊かな自然と温泉に包まれた、<br>静寂な時間を過ごすためのプライベートリゾート。",
+                footer_links_title: "リンク",
+                footer_faq: "よくある質問",
+                footer_contact_title: "お問い合わせ",
+                footer_address: "長野県諏訪郡下諏訪町",
+                footer_privacy: "プライバシーポリシー",
+                footer_terms: "利用規約"
+            },
+            zh: {
+                nav_logo_sub: "翠阳之宿",
+                nav_rooms: "客房",
+                nav_onsen: "温泉",
+                nav_dining: "餐饮",
+                nav_access: "交通",
+                nav_cta: "预订住宿",
+                hero_title: "翠阳之宿",
+                hero_subtitle: "下诹访温泉 · 纯天然活水温泉",
+                btn_rooms: "查看客房",
+                btn_tour: "虚拟导览",
+                concept_title: "沉浸于诹访自然与温泉的<br>宁静时光",
+                concept_text: "距JR中央本线“下诹访站”步行仅1分钟。坐落于饱览诹访湖美景的绝佳位置，<br>全室配备纯天然活水温泉及私人浴池的度假胜地。<br>作为商务与观光的据点，为您提供身心舒畅的高端住宿体验。",
+                rooms_header: "客房概览",
+                rooms_desc: "以2025年全面焕新的“旋律套房”为首，<br>全室配置顶级音乐盒『ORPHEUS KARDIA』。<br>在优美旋律中，享受极致的治愈时光。",
+                room_feature_1: "全室配备纯天然活水温泉",
+                room_feature_2: "配备 ORPHEUS KARDIA 音乐盒",
+                room_feature_3: "坐拥诹访湖与山景的绝佳视角",
+                room_detail_link: "查看客房详情 →",
+                room1_title: "旋律套房",
+                room1_spec: "双床/大床 | 32㎡",
+                room2_title: "标准客房",
+                room2_spec: "单人/双床 | 25㎡",
+                room3_title: "和式客房",
+                room3_spec: "10叠席 | 45㎡",
+                onsen_header: "纯天然活水温泉",
+                onsen_desc: "享受由下诹访丰富自然孕育而成的天然温泉，<br>在完全私密的独立空间内尽情放松。",
+                onsen_feature1_t: "私人包场温泉",
+                onsen_feature1_p: "无需担心其他客人的打扰，适合家人或情侣慢享温泉的完全私密浴场。24小时皆可使用。",
+                onsen_feature2_t: "旋律套房专享",
+                onsen_feature2_p: "为旋律套房住客准备的专属特别温泉及放松室，提供更高品质的治愈体验。",
+                onsen_stat1: "弱碱性",
+                onsen_stat2: "泉温",
+                onsen_stat3: "泉质",
+                onsen_stat3_v: "美肌",
+                dining_header: "精致早餐",
+                dining_desc: "提供以八岳山麓100%荞麦粉制作的十割荞麦面及长野县产食材的日式早餐。早晨7点起供应，即使提早出发也无后顾之忧。",
+                menu1_icon: "荞麦",
+                menu1_title: "十割荞麦套餐",
+                menu1_desc: "使用八岳产荞麦粉",
+                menu2_icon: "和食",
+                menu2_title: "和式早餐套餐",
+                menu2_desc: "当地产蔬菜与温泉蛋",
+                menu_time: "◯ 7:00 - 9:00",
+                menu_place: "◯ 1楼 餐厅",
+                services_header: "馆内设施与服务",
+                service1_title: "免费停车场",
+                service1_desc: "提供20个车位",
+                service2_title: "自行车租赁",
+                service2_desc: "提供电动辅助自行车",
+                service3_title: "前台服务",
+                service3_desc: "24小时在岗",
+                service4_title: "最优价格保证",
+                service4_desc: "官网预订享最低价",
+                access_header: "交通信息",
+                access_car_icon: "驾",
+                access_car_title: "自驾前往",
+                access_car_desc: "距中央自动车道“诹访南IC”约5分钟车程<br>距长野自动车道“冈谷IC”约15分钟车程<br><span class=\"highlight\">※提供免费停车场（20个车位）</span>",
+                access_train_icon: "车",
+                access_train_title: "乘坐电车",
+                access_train_desc: "距JR中央本线“下诹访站”步行1分钟<br>距上诹访站约10分钟车程<br><span class=\"highlight\">※提供车站接送服务（需预约）</span>",
+                access_sight_icon: "游",
+                access_sight_title: "周边景点",
+                access_sight_desc: "诹访大社（下社）秋宫·春宫：步行可达<br>诹访湖：步行5分钟<br>高岛城：车程约10分钟",
+                address_title: "详细地址",
+                address_detail: "长野县诹访郡下诹访町xxxxx",
+                map_hint: "下诹访站步行1分钟",
+                map_sub: "JR中央本线",
+                res_header: "客房预订",
+                res_desc: "官网预订即可享受最优价格保证。<br>以最合适的价格，开启最完美的旅程。",
+                res_btn1: "查询空房与预订",
+                res_btn2: "在线咨询",
+                res_checkin: "入住时间 15:00",
+                res_checkout: "退房时间 10:00",
+                footer_logo_sub: "翠 阳 之 宿",
+                footer_desc: "被下诹访丰富的自然与温泉环绕，<br>度过静谧时光的私人度假地。",
+                footer_links_title: "快速链接",
+                footer_faq: "常见问题",
+                footer_contact_title: "联系我们",
+                footer_address: "长野县诹访郡下诹访町",
+                footer_privacy: "隐私政策",
+                footer_terms: "使用条款"
+            },
+            en: {
+                nav_logo_sub: "Green Sun Ryokan",
+                nav_rooms: "Rooms",
+                nav_onsen: "Onsen",
+                nav_dining: "Dining",
+                nav_access: "Access",
+                nav_cta: "Book Now",
+                hero_title: "GREEN SUN",
+                hero_subtitle: "Shimosuwa Onsen · Natural Spring Water",
+                btn_rooms: "View Rooms",
+                btn_tour: "Virtual Tour",
+                concept_title: "Embrace Serenity in<br>Suwa Nature & Onsen",
+                concept_text: "1-minute walk from JR Shimosuwa Station. A private resort overlooking Lake Suwa,<br>featuring natural spring baths in every room.<br>An ideal base for business and sightseeing, ensuring a premium stay for mind and body.",
+                rooms_header: "Guest Rooms",
+                rooms_desc: "Starting with the 'Melody Room' fully renovated in 2025,<br>all rooms feature luxury music boxes 'ORPHEUS KARDIA'.<br>Spend your time healing accompanied by beautiful melodies.",
+                room_feature_1: "Private hot spring bath in all rooms",
+                room_feature_2: "Equipped with ORPHEUS KARDIA music box",
+                room_feature_3: "Views of Lake Suwa or Mountain vistas",
+                room_detail_link: "See Room Details →",
+                room1_title: "Melody Room",
+                room1_spec: "Twin/Double | 32㎡",
+                room2_title: "Standard Room",
+                room2_spec: "Single/Twin | 25㎡",
+                room3_title: "Japanese Room",
+                room3_spec: "10-Tatami | 45㎡",
+                onsen_header: "Natural Hot Springs",
+                onsen_desc: "Enjoy the natural hot springs nurtured by Shimosuwa's nature<br>in a completely private space.",
+                onsen_feature1_t: "Private Baths",
+                onsen_feature1_p: "Enjoy the hot springs with family or partners without any disturbance. Fully private baths available 24 hours.",
+                onsen_feature2_t: "Melody Room Exclusive",
+                onsen_feature2_p: "A special onsen and relaxation room reserved exclusively for Melody Room guests. Offering a higher level of healing.",
+                onsen_stat1: "Mild Alkaline",
+                onsen_stat2: "Temp",
+                onsen_stat3: "Quality",
+                onsen_stat3_v: "Skin Care",
+                dining_header: "Breakfast",
+                dining_desc: "Enjoy a Japanese breakfast using Nagano ingredients, including 100% buckwheat 'Juwari Soba'. Served from 7:00 AM for early departures.",
+                menu1_icon: "Soba",
+                menu1_title: "Juwari Soba Set",
+                menu1_desc: "Yatsugatake Buckwheat",
+                menu2_icon: "Washoku",
+                menu2_title: "Japanese Set",
+                menu2_desc: "Local Veggies & Onsen Egg",
+                menu_time: "◯ 7:00 - 9:00",
+                menu_place: "◯ 1F Restaurant",
+                services_header: "Facilities & Services",
+                service1_title: "Free Parking",
+                service1_desc: "20 spaces available",
+                service2_title: "Bike Rental",
+                service2_desc: "Electric power-assist",
+                service3_title: "Reception",
+                service3_desc: "24-hour service",
+                service4_title: "Best Rate",
+                service4_desc: "Lowest via official site",
+                access_header: "Access Guide",
+                access_car_icon: "Car",
+                access_car_title: "By Car",
+                access_car_desc: "5 mins from Suwa-minami IC<br>15 mins from Okaya IC<br><span class=\"highlight\">*Free parking (20 spaces)</span>",
+                access_train_icon: "Train",
+                access_train_title: "By Train",
+                access_train_desc: "1 min walk from JR Shimosuwa Station<br>10 mins drive from Kamisuwa Station<br><span class=\"highlight\">*Pickup service (Booking required)</span>",
+                access_sight_icon: "Tour",
+                access_sight_title: "Sightseeing",
+                access_sight_desc: "Suwa Taisha Shrines: Walking distance<br>Lake Suwa: 5 mins walk<br>Takashima Castle: 10 mins drive",
+                address_title: "Address",
+                address_detail: "xxxxx, Shimosuwa, Nagano",
+                map_hint: "1 min from Shimosuwa St.",
+                map_sub: "JR Chuo Main Line",
+                res_header: "Reservation",
+                res_desc: "Book through our official site for the best rate guarantee.<br>The best stay at the best price.",
+                res_btn1: "Search & Book",
+                res_btn2: "Contact Us",
+                res_checkin: "Check-in 15:00",
+                res_checkout: "Check-out 10:00",
+                footer_logo_sub: "GREEN SUN",
+                footer_desc: "A private resort for peaceful moments,<br>surrounded by Shimosuwa's nature.",
+                footer_links_title: "Links",
+                footer_faq: "FAQ",
+                footer_contact_title: "Contact",
+                footer_address: "Shimosuwa, Nagano",
+                footer_privacy: "Privacy Policy",
+                footer_terms: "Terms of Use"
+            }
+        };
+
+        // --- 语言切换逻辑 ---
+        function switchLang(lang) {
+            // 更新带有 data-i18n 的所有元素
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang][key]) {
+                    el.innerHTML = i18n[lang][key];
+                }
+            });
+
+            // 更新切换按钮的高亮状态
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.innerText.toLowerCase() === (lang === 'ja' ? 'jp' : lang)) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // 更新 html lang 属性
+            document.documentElement.lang = lang;
+        }
+
+        // --- GSAP 动画 ---
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+        // 导航栏效果
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // Hero 进场动画
+        const heroTl = gsap.timeline();
+        heroTl.to('.hero-location', { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.5 })
+              .to('.hero-title', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.6')
+              .to('.hero-subtitle', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.6')
+              .to('.hero-buttons', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.6');
+
+        // 背景视差
+        gsap.to('#heroBg', {
+            yPercent: 30,
+            ease: 'none',
+            scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+        });
+
+        // 通用渐现动画
+        gsap.utils.toArray('.fade-up').forEach(element => {
+            gsap.to(element, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: { trigger: element, start: 'top 80%', toggleActions: 'play none none reverse' }
+            });
+        });
+
+        gsap.utils.toArray('.fade-in').forEach(element => {
+            gsap.to(element, {
+                opacity: 1,
+                duration: 1.5,
+                ease: 'power2.out',
+                scrollTrigger: { trigger: element, start: 'top 80%', toggleActions: 'play none none reverse' }
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    gsap.to(window, { duration: 1, scrollTo: { y: target, offsetY: 70 }, ease: 'power3.inOut' });
+                }
+            });
+        });
+
+        // 房间卡片交替进场
+        gsap.from('.room-card', {
+            opacity: 0, y: 50, duration: 0.8, stagger: 0.2, ease: 'power3.out',
+            scrollTrigger: { trigger: '.rooms-grid', start: 'top 80%' }
+        });
+
+        // 房间主图视差
+        gsap.to('.rooms-image-main', {
+            yPercent: 10, ease: 'none',
+            scrollTrigger: { trigger: '.rooms-showcase', start: 'top bottom', end: 'bottom top', scrub: true }
+        });
+    </script>
 </body>
 </html>
