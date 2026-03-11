@@ -346,7 +346,7 @@
             </div>
         </div>
 
-        <!-- 服务及设施 Tab（新增你提供的内容） -->
+        <!-- 服务及设施 Tab -->
         <div id="tab-content-3" class="tab-content mt-8 hidden">
             <div class="bg-white p-8 rounded-3xl shadow">
                 <h2 class="text-2xl font-semibold mb-6">设施服务</h2>
@@ -471,19 +471,354 @@
             </div>
         </div>
 
-        <!-- 政策 Tab（占位，可自行补充） -->
+        <!-- 政策 Tab -->
         <div id="tab-content-4" class="tab-content mt-8 hidden">
             <div class="bg-white p-8 rounded-3xl shadow">
                 <h2 class="text-2xl font-semibold mb-6">预订政策</h2>
-                <p class="text-gray-700">（入住时间、取消政策等内容可在此添加）</p>
+                
+                <div class="space-y-8 text-gray-800">
+                    <!-- 入住/离店时间 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-clock text-[#0066cc]"></i> 入住/离店时间
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">入住时间</div>
+                                <div class="text-lg">14:00 后</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">退房时间</div>
+                                <div class="text-lg">12:00 前</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 预订提示 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-info-circle text-[#0066cc]"></i> 预订提示
+                        </h3>
+                        <p class="leading-relaxed">
+                            订单需等酒店或供应商确认后生效，订单确认结果以平台短信、邮件或App通知为准。
+                        </p>
+                    </div>
+
+                    <!-- 入住提示 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-door-open text-[#0066cc]"></i> 入住提示
+                        </h3>
+                        <p class="leading-relaxed">
+                            前台服务：24小时营业
+                        </p>
+                    </div>
+
+                    <!-- 接待提示 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-id-card text-[#0066cc]"></i> 接待提示
+                        </h3>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="font-semibold">年龄限制</div>
+                                <div>入住办理人需年满18岁</div>
+                            </div>
+                            <div>
+                                <div class="font-semibold">可接待人群</div>
+                                <div>接待来自任何国家/地区的客人</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 宠物政策 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-paw text-[#0066cc]"></i> 宠物
+                        </h3>
+                        <p class="text-red-600 font-medium">不可携带宠物</p>
+                    </div>
+
+                    <!-- 早餐 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-coffee text-[#0066cc]"></i> 早餐
+                        </h3>
+                        <div class="space-y-2">
+                            <div>餐食形式：自助餐，¥50/份</div>
+                            <div>营业时间：每天 06:00–09:00 开放</div>
+                        </div>
+                    </div>
+
+                    <!-- 支付方式 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-credit-card text-[#0066cc]"></i> 支付方式
+                        </h3>
+                        <div class="flex flex-wrap gap-4 mt-3">
+                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01qW8f1K1wZ0Z0Z0Z0Z_!!6000000006325-2-tps-120-48.png" alt="UnionPay" class="h-8">
+                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="Diners Club" class="h-8">
+                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="JCB" class="h-8">
+                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="VISA" class="h-8">
+                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="American Express" class="h-8">
+                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="MasterCard" class="h-8">
+                        </div>
+                    </div>
+
+                    <!-- 儿童及加床政策 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-child text-[#0066cc]"></i> 儿童及加床
+                        </h3>
+                        <p class="mb-4">欢迎携带儿童入住</p>
+                        
+                        <div class="mb-4">
+                            <div class="font-semibold">婴儿床及加床政策</div>
+                            <p>所有房型可加床、不提供婴儿床</p>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-100">
+                                        <th class="border px-4 py-3 text-left">年龄</th>
+                                        <th class="border px-4 py-3 text-left">床铺</th>
+                                        <th class="border px-4 py-3 text-left">费用</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border px-4 py-3">17岁及以下</td>
+                                        <td class="border px-4 py-3">使用现有床铺</td>
+                                        <td class="border px-4 py-3 text-green-600">免费</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border px-4 py-3">17岁及以下</td>
+                                        <td class="border px-4 py-3">加床</td>
+                                        <td class="border px-4 py-3">¥80/人/晚</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border px-4 py-3">18岁及以上</td>
+                                        <td class="border px-4 py-3">加床</td>
+                                        <td class="border px-4 py-3">¥80/人/晚</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10 text-center text-sm text-gray-500">
+                    以上政策以酒店最终确认为准，建议预订前与酒店确认最新信息。
+                </div>
             </div>
         </div>
 
-        <!-- 地点 Tab（占位，可自行补充） -->
+        <!-- 地点 Tab（已更新为完整周边内容） -->
         <div id="tab-content-5" class="tab-content mt-8 hidden">
             <div class="bg-white p-8 rounded-3xl shadow">
                 <h2 class="text-2xl font-semibold mb-6">酒店位置</h2>
-                <p class="text-gray-700">（地图、交通信息等内容可在此添加）</p>
+                <p class="text-gray-700 mb-6 leading-relaxed">
+                    平湖绿阳大饭店位于浙江省平湖经济技术开发区昌盛路288号，交通便利，周边景点、美食、购物资源丰富。以下为酒店周边热门推荐（距离以直线或驾车估算为准，实际以地图导航为准）。
+                </p>
+
+                <div class="space-y-10">
+                    <!-- 交通 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-subway text-[#0066cc]"></i> 交通
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">火车站：嘉善南站</div>
+                                <div>14.5千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">火车站：嘉善站</div>
+                                <div>19.8千米</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 景点 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-landmark text-[#0066cc]"></i> 景点
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">平湖莫氏庄园</div>
+                                <div>2.9千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">歌斐颂巧克力小镇</div>
+                                <div>8.1千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">东湖景区</div>
+                                <div>3.5千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">伊佳林开心梦工厂(平湖店)</div>
+                                <div>1.5千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">神仙池休闲中心</div>
+                                <div>1.4千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">白马湖</div>
+                                <div>1.9千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">南河头</div>
+                                <div>3千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">平湖FFPARK时尚公园</div>
+                                <div>2千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">平湖市李叔同纪念馆</div>
+                                <div>3.4千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">平湖经济技术开发区文化中心</div>
+                                <div>1.8千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">东湖景区-报本禅寺</div>
+                                <div>3.8千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">2026金平湖灯秀</div>
+                                <div>3.8千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">平湖市博物馆</div>
+                                <div>5千米</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 美食 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-utensils text-[#0066cc]"></i> 美食
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">平湖绿阳大饭店（酒店内）</div>
+                                <div><100米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">阿香米线(平湖大润发店)</div>
+                                <div>2.3千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">老平湖(城南西路店)</div>
+                                <div>2千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">肯德基(平湖新华店)</div>
+                                <div>2.5千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">老娘舅(平湖店)</div>
+                                <div>2.4千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">五芳斋(新华中路店)</div>
+                                <div>2.5千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">汉堡小子(大润发店)</div>
+                                <div>2.3千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">索菲克牛排(平湖店)</div>
+                                <div>2.3千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">韩国馆(城北店)</div>
+                                <div>1.3千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">美利家(兴平店)</div>
+                                <div>1.2千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">东北靓仔羊腿(兴平路店)</div>
+                                <div>1.2千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">松岛</div>
+                                <div>1.3千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">南海渔村(祥中路十年老店)</div>
+                                <div>4千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">维多利蛋糕世界(白马店)</div>
+                                <div>1.3千米</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 购物 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-shopping-bag text-[#0066cc]"></i> 购物
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">锦杭百货(解放中路店)</div>
+                                <div>2.5千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">爱尚花艺生活馆</div>
+                                <div>2.5千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">平湖吾悦广场</div>
+                                <div>4.9千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">丹丹家羽绒服批发</div>
+                                <div>1.1千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">平湖国际箱包城</div>
+                                <div>1.4千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">平湖市农副产品综合批发市场</div>
+                                <div>1.6千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">精品羽绒馆</div>
+                                <div>5.4千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">关帝庙商城</div>
+                                <div>2.4千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">平湖羽绒服务市场</div>
+                                <div>2.1千米</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl">
+                                <div class="font-semibold">平湖·中国服装城</div>
+                                <div>1.9千米</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10 text-center text-sm text-gray-500">
+                    以上距离为参考值，实际出行建议使用高德/百度地图导航。酒店提供免费停车，欢迎自驾。
+                </div>
             </div>
         </div>
 
@@ -496,10 +831,10 @@
 
 </div>
 
-<!-- 弹窗部分保持不变 -->
+<!-- 弹窗部分 -->
 <div id="suiteModal" class="modal">
     <div class="modal-content">
-        <span class="close" onclick="closeModal('suiteModal')">&times;</span>
+        <span class="close" onclick="closeModal('suiteModal')">×</span>
         <h2 class="text-3xl font-bold mb-6 text-center">豪华套房 照片（自动轮播）</h2>
         <div class="carousel-container" id="suiteCarousel">
             <div class="carousel" id="suiteSlides">
@@ -516,7 +851,7 @@
     </div>
 </div>
 
-<!-- 其他弹窗类似，省略以节省空间，但实际代码中需保留 -->
+<!-- 其他弹窗类似，省略 -->
 
 <!-- 底部 -->
 <footer class="mt-16 bg-gray-900 text-white py-12">
@@ -554,31 +889,13 @@ document.addEventListener('click', e => {
     if (content) content.classList.remove('hidden');
 });
 
-// 自动轮播逻辑（保持不变）
-let carousels = {};
-
-function startAutoCarousel(modalId) {
-    // ... 原有代码 ...
-}
-
-function stopAutoCarousel(modalId) {
-    // ... 原有代码 ...
-}
-
+// 自动轮播逻辑（简化版示例）
 function openModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.style.display = "block";
-        startAutoCarousel(modalId);
-    }
+    document.getElementById(modalId).style.display = "block";
 }
 
 function closeModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.style.display = "none";
-        stopAutoCarousel(modalId);
-    }
+    document.getElementById(modalId).style.display = "none";
 }
 
 window.onclick = function(event) {
@@ -589,8 +906,7 @@ window.onclick = function(event) {
 
 // 默认激活概览
 window.addEventListener('load', () => {
-    const firstTab = document.querySelector('.tab-link');
-    if (firstTab) firstTab.click();
+    document.querySelector('.tab-link').click();
 });
 </script>
 
