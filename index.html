@@ -1,218 +1,181 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>平湖绿阳大饭店</title>
-
-<style>
-
-body{
-margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background:#f5f5f5;
-color:#333;
-}
-
-header{
-background:#1e3d2f;
-color:white;
-padding:30px;
-text-align:center;
-}
-
-.hero{
-background:url("https://images.unsplash.com/photo-1566073771259-6a8506099945") center/cover;
-height:400px;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:40px;
-font-weight:bold;
-}
-
-.container{
-width:90%;
-max-width:1100px;
-margin:auto;
-padding:40px 0;
-}
-
-.section-title{
-font-size:28px;
-margin-bottom:20px;
-}
-
-.room-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.room{
-background:white;
-border-radius:10px;
-padding:20px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-.room h3{
-margin-top:0;
-}
-
-.facilities{
-display:flex;
-flex-wrap:wrap;
-gap:15px;
-}
-
-.facilities div{
-background:white;
-padding:10px 20px;
-border-radius:20px;
-box-shadow:0 3px 10px rgba(0,0,0,0.1);
-}
-
-.contact{
-background:white;
-padding:30px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-footer{
-text-align:center;
-padding:20px;
-background:#222;
-color:white;
-margin-top:40px;
-}
-
-button{
-background:#1e3d2f;
-color:white;
-border:none;
-padding:12px 20px;
-border-radius:5px;
-cursor:pointer;
-}
-
-button:hover{
-background:#2f5f48;
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平湖绿阳大饭店预订价格,联系电话位置地址【携程酒店】</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+        }
+        
+        .tab-active {
+            color: #287dfa;
+            border-bottom: 2px solid #287dfa;
+            font-weight: 500;
+        }
+        
+        .facility-icon {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        }
+        
+        .price-tag {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+        }
+        
+        .rating-circle {
+            background: conic-gradient(#287dfa 0% 90%, #e0e0e0 90% 100%);
+        }
+        
+        .scroll-snap {
+            scroll-snap-type: x mandatory;
+        }
+        
+        .scroll-snap > * {
+            scroll-snap-align: start;
+        }
+        
+        .image-gallery:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .hotel-card {
+            transition: all 0.3s ease;
+        }
+        
+        .hotel-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .amenity-badge {
+            background: rgba(40, 125, 250, 0.1);
+            color: #287dfa;
+        }
+        
+        .review-tag {
+            background: rgba(255, 107, 107, 0.1);
+            color: #ff6b6b;
+        }
+    </style>
 </head>
+<body class="text-gray-800">
 
-<body>
+    <!-- 顶部导航 -->
+    <nav class="nav-blur fixed top-0 w-full z-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="text-blue-500 text-2xl font-bold flex items-center gap-2">
+                    <i class="fas fa-plane-departure"></i>
+                    <span class="text-blue-600">携程</span>
+                </div>
+                <div class="hidden md:flex items-center gap-6 text-sm text-gray-600 ml-8">
+                    <a href="#" class="hover:text-blue-500 transition">酒店</a>
+                    <a href="#" class="hover:text-blue-500 transition">机票</a>
+                    <a href="#" class="hover:text-blue-500 transition">旅游</a>
+                    <a href="#" class="hover:text-blue-500 transition">攻略</a>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex items-center gap-2 text-sm text-gray-600 bg-gray-100 px-3 py-1.5 rounded-full">
+                    <i class="fas fa-map-marker-alt text-blue-500"></i>
+                    <span>平湖</span>
+                </div>
+                <button class="text-blue-500 text-sm font-medium hover:bg-blue-50 px-4 py-2 rounded-lg transition">登录</button>
+                <button class="bg-blue-500 text-white text-sm px-4 py-2 rounded-lg hover:bg-blue-600 transition">注册</button>
+            </div>
+        </div>
+    </nav>
 
-<header>
-<h1>平湖绿阳大饭店</h1>
-<p>日式风格商务酒店</p>
-</header>
+    <!-- 搜索栏 -->
+    <div class="mt-16 bg-white border-b border-gray-200 sticky top-16 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex flex-wrap gap-3 items-center">
+                <div class="flex-1 min-w-[200px] bg-gray-50 rounded-lg px-4 py-2.5 flex items-center gap-2 border border-gray-200 focus-within:border-blue-400 transition">
+                    <i class="fas fa-bed text-gray-400"></i>
+                    <input type="text" value="平湖绿阳大饭店" class="bg-transparent outline-none w-full text-sm" placeholder="搜索酒店">
+                </div>
+                <div class="flex items-center gap-2 bg-gray-50 rounded-lg px-4 py-2.5 border border-gray-200">
+                    <i class="far fa-calendar text-gray-400"></i>
+                    <div class="text-sm">
+                        <div class="font-medium">3月4日</div>
+                        <div class="text-xs text-gray-500">入住</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 bg-gray-50 rounded-lg px-4 py-2.5 border border-gray-200">
+                    <i class="far fa-calendar text-gray-400"></i>
+                    <div class="text-sm">
+                        <div class="font-medium">3月12日</div>
+                        <div class="text-xs text-gray-500">退房</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 bg-gray-50 rounded-lg px-4 py-2.5 border border-gray-200">
+                    <i class="fas fa-user-friends text-gray-400"></i>
+                    <div class="text-sm">
+                        <div class="font-medium">2成人</div>
+                        <div class="text-xs text-gray-500">1间房</div>
+                    </div>
+                </div>
+                <button class="bg-blue-500 text-white px-8 py-2.5 rounded-lg hover:bg-blue-600 transition font-medium">
+                    <i class="fas fa-search mr-2"></i>搜索
+                </button>
+            </div>
+        </div>
+    </div>
 
-<div class="hero">
-欢迎入住
-</div>
+    <!-- 面包屑 -->
+    <div class="max-w-7xl mx-auto px-4 py-3 text-sm text-gray-500">
+        <span class="hover:text-blue-500 cursor-pointer">携程酒店</span>
+        <i class="fas fa-chevron-right text-xs mx-2"></i>
+        <span class="hover:text-blue-500 cursor-pointer">平湖酒店</span>
+        <i class="fas fa-chevron-right text-xs mx-2"></i>
+        <span class="text-gray-800 font-medium">平湖绿阳大饭店</span>
+    </div>
 
-<div class="container">
-
-<h2 class="section-title">酒店简介</h2>
-
-<p>
-平湖绿阳大饭店位于浙江省平湖经济技术开发区昌盛路288号，
-酒店占地约2万平方米，拥有多栋酒店建筑与超过300间客房。
-酒店融合日式风格设计，并提供餐厅、健身房、桑拿浴室、按摩室等设施。
-</p>
-
-<p>
-酒店内设有正宗日本料理，由日本大厨提供餐饮服务，
-同时提供商务会议、多功能厅以及长期住宿公寓服务。
-</p>
-
-</div>
-
-
-<div class="container">
-
-<h2 class="section-title">房型介绍</h2>
-
-<div class="room-grid">
-
-<div class="room">
-<h3>豪华套房</h3>
-<p>面积：57㎡</p>
-<p>床型：1.8m大床</p>
-<p>楼层：5层</p>
-<button>立即预订</button>
-</div>
-
-<div class="room">
-<h3>豪华房</h3>
-<p>面积：45㎡</p>
-<p>床型：大床 / 双床</p>
-<p>楼层：4-5层</p>
-<button>立即预订</button>
-</div>
-
-<div class="room">
-<h3>标准房</h3>
-<p>面积：28㎡</p>
-<p>床型：双人床 / 双床</p>
-<p>楼层：2-5层</p>
-<button>立即预订</button>
-</div>
-
-</div>
-
-</div>
-
-
-<div class="container">
-
-<h2 class="section-title">酒店设施</h2>
-
-<div class="facilities">
-
-<div>餐厅</div>
-<div>健身房</div>
-<div>桑拿浴室</div>
-<div>按摩室</div>
-<div>乒乓球室</div>
-<div>免费停车场</div>
-<div>会议厅</div>
-<div>洗衣服务</div>
-
-</div>
-
-</div>
-
-
-<div class="container">
-
-<h2 class="section-title">联系酒店</h2>
-
-<div class="contact">
-
-<p><b>地址：</b> 浙江省平湖经济技术开发区昌盛路288号</p>
-
-<p><b>电话：</b> +86-573-85071999</p>
-
-<p><b>入住时间：</b> 14:00 之后</p>
-
-<p><b>退房时间：</b> 12:00 之前</p>
-
-<button>在线预订</button>
-
-</div>
-
-</div>
-
-
-<footer>
-© 2026 平湖绿阳大饭店
-</footer>
-
-</body>
-</html>
+    <!-- 主要内容区 -->
+    <div class="max-w-7xl mx-auto px-4 pb-12">
+        
+        <!-- 酒店标题区 -->
+        <div class="bg-white rounded-2xl p-6 mb-4 shadow-sm">
+            <div class="flex flex-col lg:flex-row justify-between gap-4">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900 mb-2">平湖绿阳大饭店</h1>
+                    <div class="flex items-center gap-4 text-sm text-gray-600 mb-3">
+                        <div class="flex items-center gap-1">
+                            <i class="fas fa-map-marker-alt text-blue-500"></i>
+                            <span>浙江平湖经济技术开发区昌盛路288号</span>
+                            <span class="text-blue-500 cursor-pointer hover:underline">显示地图</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="flex text-yellow-400 text-sm">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="bg-blue-100 text-blue-600 text-xs px-2 py-0.5 rounded">高档型</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="text-right">
+                        <div class="text-3xl font-bold text-orange-500">¥<span id="priceDisplay">--</span></div>
+                        <div class="text-xs text-gray-500">起/晚</div>
+                    </div>
+                    <button class="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition font-medium shadow-lg shadow-orange-200">
+                        查看
