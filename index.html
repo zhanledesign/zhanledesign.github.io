@@ -57,10 +57,11 @@
     携程酒店 &nbsp;•&nbsp; 平湖酒店 &nbsp;•&nbsp; <span class="text-[#0066cc]">平湖绿阳大饭店</span>
 </div>
 
-<div class="max-w-7xl mx-auto px-6 grid grid-cols-12 gap-8">
+<div class="max-w-7xl mx-auto px-6">
 
-    <!-- 左侧主内容 -->
-    <div class="col-span-8">
+    <!-- 左侧主内容（占满宽度） -->
+    <div class="w-full">
+
         <!-- 酒店标题栏 -->
         <div class="flex justify-between items-start">
             <div>
@@ -556,12 +557,12 @@
                             <i class="fa-solid fa-credit-card text-[#0066cc]"></i> 支付方式
                         </h3>
                         <div class="flex flex-wrap gap-4 mt-3">
-                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01qW8f1K1wZ0Z0Z0Z0Z_!!6000000006325-2-tps-120-48.png" alt="UnionPay" class="h-8">
-                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="Diners Club" class="h-8">
-                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="JCB" class="h-8">
-                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="VISA" class="h-8">
-                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="American Express" class="h-8">
-                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="MasterCard" class="h-8">
+                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01qW8f1K1wZ0Z0Z0Z0_!!6000000006325-2-tps-120-48.png" alt="UnionPay" class="h-8">
+                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="Diners Club" class="h-8">
+                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="JCB" class="h-8">
+                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="VISA" class="h-8">
+                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="American Express" class="h-8">
+                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="MasterCard" class="h-8">
                         </div>
                     </div>
 
@@ -614,7 +615,7 @@
             </div>
         </div>
 
-        <!-- 地点 Tab（已更新为完整周边内容） -->
+        <!-- 地点 Tab -->
         <div id="tab-content-5" class="tab-content mt-8 hidden">
             <div class="bg-white p-8 rounded-3xl shadow">
                 <h2 class="text-2xl font-semibold mb-6">酒店位置</h2>
@@ -824,14 +825,9 @@
 
     </div>
 
-    <!-- 右侧边栏（占位） -->
-    <div class="col-span-4">
-        <!-- 可放置地图、推荐酒店、预订按钮等 -->
-    </div>
-
 </div>
 
-<!-- 弹窗部分 -->
+<!-- 弹窗部分（豪华套房示例，其余类似可自行补充） -->
 <div id="suiteModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal('suiteModal')">×</span>
@@ -850,8 +846,6 @@
         <div class="carousel-dots" id="suiteDots"></div>
     </div>
 </div>
-
-<!-- 其他弹窗类似，省略 -->
 
 <!-- 底部 -->
 <footer class="mt-16 bg-gray-900 text-white py-12">
@@ -889,7 +883,7 @@ document.addEventListener('click', e => {
     if (content) content.classList.remove('hidden');
 });
 
-// 自动轮播逻辑（简化版示例）
+// 模态框控制
 function openModal(modalId) {
     document.getElementById(modalId).style.display = "block";
 }
