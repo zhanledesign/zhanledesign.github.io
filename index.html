@@ -15,35 +15,19 @@
         .tab-active { border-bottom: 3px solid #0066cc; color: #0066cc; font-weight: 700; }
         .room-card { transition: all 0.3s; }
         .room-card:hover { box-shadow: 0 10px 25px rgba(0,102,204,0.15); transform: translateY(-4px); }
-
-        /* 弹窗 & 自动轮播 */
-        .modal { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.85); overflow: auto; }
-        .modal-content { margin: 5% auto; padding: 20px; width: 90%; max-width: 1200px; background: white; border-radius: 12px; position: relative; }
-        .close { color: #aaa; float: right; font-size: 40px; font-weight: bold; cursor: pointer; }
-        .close:hover { color: black; }
-        .carousel-container { position: relative; overflow: hidden; width: 100%; }
-        .carousel { display: flex; transition: transform 0.8s ease-in-out; width: 100%; }
-        .carousel img { width: 100%; max-width: 800px; height: auto; object-fit: cover; flex-shrink: 0; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
-        .carousel-dots { text-align: center; padding: 10px 0; }
-        .dot { height: 12px; width: 12px; margin: 0 6px; background: #bbb; border-radius: 50%; display: inline-block; cursor: pointer; transition: background 0.3s; }
-        .dot.active { background: #0066cc; }
+        .review-card { transition: all 0.3s; }
+        .review-card:hover { box-shadow: 0 10px 25px rgba(0,102,204,0.08); }
+        .facility-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 24px; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-<!-- 顶部导航栏（简约高级版） -->
 <header class="ctrip-blue text-white py-4 shadow-md">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <!-- 左侧：酒店名称 -->
-        <div class="text-3xl font-bold tracking-wide">
-            绿阳大饭店
-        </div>
-
-        <!-- 右侧：导航链接 -->
+        <div class="text-3xl font-bold tracking-wide">绿阳大饭店</div>
         <div class="flex items-center gap-10 text-base font-medium">
             <a href="#" class="hover:underline flex items-center gap-1.5 transition-colors">
-                <i class="fa-solid fa-phone text-lg"></i>
-                联系客服
+                <i class="fa-solid fa-phone text-lg"></i> 联系客服
             </a>
             <a href="#" class="hover:underline">我的订单</a>
             <a href="#" class="hover:underline">登录</a>
@@ -52,17 +36,13 @@
     </div>
 </header>
 
-<!-- 面包屑 -->
 <div class="max-w-7xl mx-auto px-6 py-4 text-sm text-gray-500">
-    携程酒店 &nbsp;•&nbsp; 平湖酒店 &nbsp;•&nbsp; <span class="text-[#0066cc]">平湖绿阳大饭店</span>
+    携程酒店 • 平湖酒店 • <span class="text-[#0066cc]">平湖绿阳大饭店</span>
 </div>
 
 <div class="max-w-7xl mx-auto px-6">
-
-    <!-- 左侧主内容（占满宽度） -->
     <div class="w-full">
 
-        <!-- 酒店标题栏 -->
         <div class="flex justify-between items-start">
             <div>
                 <h1 class="text-4xl font-bold text-gray-900">平湖绿阳大饭店</h1>
@@ -84,7 +64,6 @@
             </button>
         </div>
 
-        <!-- 图片画廊 -->
         <div class="mt-6 grid grid-cols-12 gap-3 rounded-3xl overflow-hidden shadow-xl">
             <div class="col-span-8">
                 <img src="https://i.postimg.cc/Gpd4BNWr/fan-dian-jie-shao.jpg" alt="酒店主图" class="hotel-img w-full h-full object-cover">
@@ -105,7 +84,6 @@
         </div>
         <div class="text-right mt-2 text-xs text-gray-500">查看全部54张照片</div>
 
-        <!-- Tab栏 -->
         <div class="mt-10 border-b flex gap-8 text-base tab-bar">
             <a href="#" data-tab="0" class="tab-link tab-active pb-4">概览</a>
             <a href="#" data-tab="1" class="tab-link pb-4">房间</a>
@@ -144,15 +122,26 @@
 
         <!-- 房间 Tab -->
         <div id="tab-content-1" class="tab-content mt-8 hidden">
-            <div class="space-y-6">
+            <div class="space-y-12">
+
                 <!-- 豪华套房 -->
-                <div class="room-card bg-white rounded-3xl overflow-hidden border border-gray-100 flex flex-col md:flex-row">
-                    <img src="https://i.postimg.cc/htMc09Y3/0201g120000atxdvd8D9A_R_600_400_R5.webp" alt="豪华套房" class="w-full md:w-80 h-64 md:h-auto object-cover">
-                    <div class="flex-1 p-7">
+                <div class="room-card bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-md">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-3 p-4 bg-gray-50">
+                        <div class="md:col-span-2 row-span-2">
+                            <img src="https://i.postimg.cc/htMc09Y3/0201g120000atxdvd8D9A_R_600_400_R5.webp" alt="豪华套房 主视图" class="w-full h-full object-cover rounded-xl shadow-lg">
+                        </div>
+                        <img src="https://i.postimg.cc/XYx4gwPz/0203l120000atx4jz88FA_R_600_400_R5.webp" alt="细节1" class="w-full h-40 object-cover rounded-xl shadow">
+                        <img src="https://i.postimg.cc/L8v2VzW7/0204w120000atx8hq58B4_R_600_400_R5.webp" alt="细节2" class="w-full h-40 object-cover rounded-xl shadow">
+                        <img src="https://i.postimg.cc/y8nsTFGG/0205l120000atxaw136A2_R_600_400_R5.webp" alt="细节3" class="w-full h-40 object-cover rounded-xl shadow">
+                        <img src="https://i.postimg.cc/fR5DvxP1/0206y120000atx5h225F7_R_600_400_R5.webp" alt="细节4" class="w-full h-40 object-cover rounded-xl shadow">
+                        <img src="https://i.postimg.cc/jSvthz1p/02070120000atxck54364_R_600_400_R5.webp" alt="细节5" class="w-full h-40 object-cover rounded-xl shadow">
+                        <img src="https://i.postimg.cc/g24mKv7f/c6819662f9d642269877fb96c81ed216_R_600_400_R5.webp" alt="细节6" class="w-full h-40 object-cover rounded-xl shadow">
+                    </div>
+                    <div class="p-7">
                         <div class="flex flex-col md:flex-row justify-between items-start gap-4">
                             <div>
                                 <h3 class="text-2xl font-bold">豪华套房</h3>
-                                <div class="flex flex-wrap items-center gap-3 text-sm mt-2">
+                                <div class="flex flex-wrap items-center gap-3 text-sm mt-2 text-gray-600">
                                     <span class="flex items-center gap-1"><i class="fa-solid fa-bed"></i> 1张1.8米大床</span>
                                     <span class="flex items-center gap-1"><i class="fa-solid fa-wind"></i> 有窗</span>
                                     <span>57平方米 | 5层</span>
@@ -161,9 +150,8 @@
                             <div class="text-right">
                                 <div class="text-xs text-gray-500">今日价格</div>
                                 <div class="text-3xl font-bold text-[#0066cc] mt-1">登录查看</div>
-                                <button onclick="alert('正在跳转携程支付页...')" class="mt-3 bg-[#0066cc] text-white px-8 py-2 rounded-xl text-sm font-medium">立即预订</button>
-                                <button onclick="openModal('suiteModal')" class="mt-3 bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-xl text-sm">
-                                    查看详情（7张自动轮播）
+                                <button onclick="alert('正在跳转携程支付页...')" class="mt-4 bg-[#0066cc] text-white px-8 py-3 rounded-xl text-sm font-medium hover:bg-[#0055aa]">
+                                    立即预订
                                 </button>
                             </div>
                         </div>
@@ -176,13 +164,21 @@
                 </div>
 
                 <!-- 豪华房 -->
-                <div class="room-card bg-white rounded-3xl overflow-hidden border border-gray-100 flex flex-col md:flex-row">
-                    <img src="https://i.postimg.cc/R0fGBRB5/0204v120000au0ulr5FCF_R_600_400_R5.webp" alt="豪华房" class="w-full md:w-80 h-64 md:h-auto object-cover">
-                    <div class="flex-1 p-7">
+                <div class="room-card bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-md">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-3 p-4 bg-gray-50">
+                        <div class="md:col-span-2 row-span-2">
+                            <img src="https://i.postimg.cc/htMc09Y3/0201g120000atxdvd8D9A_R_600_400_R5.webp" alt="豪华房 主视图" class="w-full h-full object-cover rounded-xl shadow-lg">
+                        </div>
+                        <img src="https://i.postimg.cc/zfWprjrY/0200i120000au0qfr8AFD_R_600_400_R5.webp" alt="细节1" class="w-full h-40 object-cover rounded-xl shadow">
+                        <img src="https://i.postimg.cc/R0fGBRB5/0204v120000au0ulr5FCF_R_600_400_R5.webp" alt="细节2" class="w-full h-40 object-cover rounded-xl shadow">
+                        <img src="https://i.postimg.cc/nL7TJkJH/0204w120000au0x2j1E3B_R_600_400_R5.webp" alt="细节3" class="w-full h-40 object-cover rounded-xl shadow">
+                        <img src="https://i.postimg.cc/nL7TJkty/1mc1e12000b6oag5h_E7B9_R_600_400_R5.webp" alt="细节4" class="w-full h-40 object-cover rounded-xl shadow">
+                    </div>
+                    <div class="p-7">
                         <div class="flex flex-col md:flex-row justify-between items-start gap-4">
                             <div>
                                 <h3 class="text-2xl font-bold">豪华房</h3>
-                                <div class="flex flex-wrap items-center gap-3 text-sm mt-2">
+                                <div class="flex flex-wrap items-center gap-3 text-sm mt-2 text-gray-600">
                                     <span class="flex items-center gap-1"><i class="fa-solid fa-bed"></i> 1张大床 或 2张单人床</span>
                                     <span class="flex items-center gap-1"><i class="fa-solid fa-wind"></i> 有窗</span>
                                     <span>45平方米 | 4-5层</span>
@@ -191,9 +187,8 @@
                             <div class="text-right">
                                 <div class="text-xs text-gray-500">今日价格</div>
                                 <div class="text-3xl font-bold text-[#0066cc] mt-1">登录查看</div>
-                                <button onclick="alert('正在跳转携程支付页...')" class="mt-3 bg-[#0066cc] text-white px-8 py-2 rounded-xl text-sm font-medium">立即预订</button>
-                                <button onclick="openModal('luxuryModal')" class="mt-3 bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-xl text-sm">
-                                    查看详情（5张自动轮播）
+                                <button onclick="alert('正在跳转携程支付页...')" class="mt-4 bg-[#0066cc] text-white px-8 py-3 rounded-xl text-sm font-medium hover:bg-[#0055aa]">
+                                    立即预订
                                 </button>
                             </div>
                         </div>
@@ -206,13 +201,20 @@
                 </div>
 
                 <!-- 高级房 -->
-                <div class="room-card bg-white rounded-3xl overflow-hidden border border-gray-100 flex flex-col md:flex-row">
-                    <img src="https://i.postimg.cc/504zRq9L/0206l120000au2ox7F633_R_600_400_R5.webp" alt="高级房" class="w-full md:w-80 h-64 md:h-auto object-cover">
-                    <div class="flex-1 p-7">
+                <div class="room-card bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-md">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-3 p-4 bg-gray-50">
+                        <div class="md:col-span-2 row-span-2">
+                            <img src="https://i.postimg.cc/nL7TJkty/1mc1e12000b6oag5h_E7B9_R_600_400_R5.webp" alt="高级房 主视图" class="w-full h-full object-cover rounded-xl shadow-lg">
+                        </div>
+                        <img src="https://i.postimg.cc/LX9PbB4j/02020120000au2pzp8707_R_600_400_R5.webp" alt="细节1" class="w-full h-40 object-cover rounded-xl shadow">
+                        <img src="https://i.postimg.cc/XJj5zcNw/0203f120000au2obr09CA_R_600_400_R5.webp" alt="细节2" class="w-full h-40 object-cover rounded-xl shadow">
+                        <img src="https://i.postimg.cc/504zRq9L/0206l120000au2ox7F633_R_600_400_R5.webp" alt="细节3" class="w-full h-40 object-cover rounded-xl shadow">
+                    </div>
+                    <div class="p-7">
                         <div class="flex flex-col md:flex-row justify-between items-start gap-4">
                             <div>
                                 <h3 class="text-2xl font-bold">高级房</h3>
-                                <div class="flex flex-wrap items-center gap-3 text-sm mt-2">
+                                <div class="flex flex-wrap items-center gap-3 text-sm mt-2 text-gray-600">
                                     <span class="flex items-center gap-1"><i class="fa-solid fa-bed"></i> 1张1.5米双人床</span>
                                     <span class="flex items-center gap-1"><i class="fa-solid fa-wind"></i> 有窗</span>
                                     <span>28平方米 | 2层</span>
@@ -221,9 +223,8 @@
                             <div class="text-right">
                                 <div class="text-xs text-gray-500">今日价格</div>
                                 <div class="text-3xl font-bold text-[#0066cc] mt-1">登录查看</div>
-                                <button onclick="alert('正在跳转携程支付页...')" class="mt-3 bg-[#0066cc] text-white px-8 py-2 rounded-xl text-sm font-medium">立即预订</button>
-                                <button onclick="openModal('premiumModal')" class="mt-3 bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-xl text-sm">
-                                    查看详情（4张自动轮播）
+                                <button onclick="alert('正在跳转携程支付页...')" class="mt-4 bg-[#0066cc] text-white px-8 py-3 rounded-xl text-sm font-medium hover:bg-[#0055aa]">
+                                    立即预订
                                 </button>
                             </div>
                         </div>
@@ -236,13 +237,19 @@
                 </div>
 
                 <!-- 标准房 -->
-                <div class="room-card bg-white rounded-3xl overflow-hidden border border-gray-100 flex flex-col md:flex-row">
-                    <img src="https://i.postimg.cc/Znc4DpRK/02065120000au473p5774_R_600_400_R5.webp" alt="标准房" class="w-full md:w-80 h-64 md:h-auto object-cover">
-                    <div class="flex-1 p-7">
+                <div class="room-card bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-md">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-3 p-4 bg-gray-50">
+                        <div class="md:col-span-2 row-span-2">
+                            <img src="https://i.postimg.cc/nL7TJkty/1mc1e12000b6oag5h_E7B9_R_600_400_R5.webp" alt="标准房 主视图" class="w-full h-full object-cover rounded-xl shadow-lg">
+                        </div>
+                        <img src="https://i.postimg.cc/1XHsYwt3/0201q120000au46c0F41A_R_600_400_R5.webp" alt="细节1" class="w-full h-40 object-cover rounded-xl shadow">
+                        <img src="https://i.postimg.cc/Znc4DpRK/02065120000au473p5774_R_600_400_R5.webp" alt="细节2" class="w-full h-40 object-cover rounded-xl shadow">
+                    </div>
+                    <div class="p-7">
                         <div class="flex flex-col md:flex-row justify-between items-start gap-4">
                             <div>
                                 <h3 class="text-2xl font-bold">标准房</h3>
-                                <div class="flex flex-wrap items-center gap-3 text-sm mt-2">
+                                <div class="flex flex-wrap items-center gap-3 text-sm mt-2 text-gray-600">
                                     <span class="flex items-center gap-1"><i class="fa-solid fa-bed"></i> 1张双人床 或 2张单人床</span>
                                     <span class="flex items-center gap-1"><i class="fa-solid fa-wind"></i> 有窗</span>
                                     <span>28平方米 | 2-5层</span>
@@ -251,9 +258,8 @@
                             <div class="text-right">
                                 <div class="text-xs text-gray-500">今日价格</div>
                                 <div class="text-3xl font-bold text-[#0066cc] mt-1">登录查看</div>
-                                <button onclick="alert('正在跳转携程支付页...')" class="mt-3 bg-[#0066cc] text-white px-8 py-2 rounded-xl text-sm font-medium">立即预订</button>
-                                <button onclick="openModal('standardModal')" class="mt-3 bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-xl text-sm">
-                                    查看详情（3张自动轮播）
+                                <button onclick="alert('正在跳转携程支付页...')" class="mt-4 bg-[#0066cc] text-white px-8 py-3 rounded-xl text-sm font-medium hover:bg-[#0055aa]">
+                                    立即预订
                                 </button>
                             </div>
                         </div>
@@ -264,85 +270,171 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
         <!-- 点评 Tab -->
         <div id="tab-content-2" class="tab-content mt-8 hidden">
             <div class="bg-white p-8 rounded-3xl shadow">
-                <h2 class="text-2xl font-semibold mb-8">住客真实点评（共69条）</h2>
-                
-                <!-- 第一条点评：5.0 超棒 -->
-                <div class="border-b border-gray-200 pb-8 mb-8">
-                    <div class="flex items-start justify-between">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-2xl">
-                                🐧
-                            </div>
-                            <div>
-                                <div class="font-bold">M244963*****</div>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <span class="bg-green-500 text-white px-2 py-0.5 rounded text-sm font-bold">5.0 超棒</span>
-                                    <span class="text-gray-500 text-sm">高级房 · 2024年1月入住 · 商务出差</span>
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-2xl font-semibold">用户点评</h2>
+                    <span class="text-gray-500 text-base">(共69条点评)</span>
+                </div>
+
+                <div class="space-y-12">
+                    <!-- 点评1 -->
+                    <div class="review-card border-b pb-12">
+                        <div class="flex gap-6">
+                            <img src="https://i.pravatar.cc/64?u=M244963" alt="M244963" class="w-14 h-14 rounded-full flex-shrink-0">
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <div class="font-semibold text-lg">M244963****</div>
+                                        <div class="flex flex-wrap gap-x-5 text-sm text-gray-500 mt-1">
+                                            <span>高级房</span>
+                                            <span>于2024年1月入住</span>
+                                            <span>商务出差</span>
+                                            <span>20条点评</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-[#0066cc] text-white font-bold text-3xl px-6 py-2 rounded-2xl flex items-center gap-2">
+                                        5.0
+                                        <span class="text-base font-medium">超棒</span>
+                                    </div>
+                                </div>
+                                <p class="mt-6 text-gray-700 leading-relaxed">
+                                    房间干净整洁，整体酒店的环境也很优雅，属于日式的酒店，尤其是早餐，品类非常丰富，房间的地毯希望定时清理。
+                                </p>
+                                <div class="mt-6 grid grid-cols-3 gap-3">
+                                    <img src="https://picsum.photos/id/101/300/180" alt="点评图片1" class="rounded-2xl object-cover h-32 shadow">
+                                    <img src="https://picsum.photos/id/160/300/180" alt="点评图片2" class="rounded-2xl object-cover h-32 shadow">
+                                    <img src="https://picsum.photos/id/201/300/180" alt="点评图片3" class="rounded-2xl object-cover h-32 shadow">
+                                </div>
+                                <div class="mt-6 flex items-center justify-between text-sm">
+                                    <button onclick="this.classList.toggle('text-[#0066cc]'); alert('已标记为有用！')" class="flex items-center gap-2 text-gray-500 hover:text-[#0066cc]">
+                                        <i class="fa-solid fa-thumbs-up"></i>
+                                        有用
+                                    </button>
+                                    <span class="text-gray-500">2024年2月4日发布</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="text-right text-sm text-gray-500">
-                            2024年2月4日发布
-                        </div>
                     </div>
-                    
-                    <div class="mt-4 text-gray-700 leading-relaxed">
-                        房间干净整洁，整体酒店的环境也很优雅，属于日式的酒店，尤其是早餐，品类非常丰富，房间的地毯希望定时清理。
-                    </div>
-                    
-                    <div class="mt-4 flex gap-3">
-                        <img src="https://via.placeholder.com/120x90?text=柜子" alt="柜子照片" class="rounded object-cover">
-                        <img src="https://via.placeholder.com/120x90?text=衣柜" alt="衣柜照片" class="rounded object-cover">
-                        <img src="https://via.placeholder.com/120x90?text=书桌" alt="书桌照片" class="rounded object-cover">
-                    </div>
-                    
-                    <div class="mt-3 text-sm text-gray-500 flex items-center gap-4">
-                        <span>👍 有用</span>
-                        <span>20条点评</span>
-                    </div>
-                </div>
 
-                <!-- 第二条点评：2.5 -->
-                <div class="border-b border-gray-200 pb-8 mb-8">
-                    <div class="flex items-start justify-between">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-2xl">
-                                👨
-                            </div>
-                            <div>
-                                <div class="font-bold">访客</div>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <span class="bg-orange-500 text-white px-2 py-0.5 rounded text-sm font-bold">2.5</span>
-                                    <span class="text-gray-500 text-sm">标准房 · 2025年3月入住 · 商务出差</span>
+                    <!-- 点评2 -->
+                    <div class="review-card border-b pb-12">
+                        <div class="flex gap-6">
+                            <img src="https://i.pravatar.cc/64?u=fangke1" alt="访客" class="w-14 h-14 rounded-full flex-shrink-0">
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <div class="font-semibold text-lg">访客</div>
+                                        <div class="flex flex-wrap gap-x-5 text-sm text-gray-500 mt-1">
+                                            <span>标准房</span>
+                                            <span>于2025年3月入住</span>
+                                            <span>商务出差</span>
+                                            <span>1条点评</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-[#0066cc] text-white font-bold text-3xl px-6 py-2 rounded-2xl">
+                                        2.5
+                                    </div>
+                                </div>
+                                <p class="mt-6 text-gray-700 leading-relaxed">
+                                    酒店的装修风格像20年前的中国，没有USB充电口，但马桶却是卫洗丽。热水要放水五分钟才能出来。如果您想体验一下怀旧的中国，这里倒是个不错的选择。值得一提的是，这里能收看日本电视节目。
+                                </p>
+                                <div class="mt-6 grid grid-cols-2 gap-3">
+                                    <img src="https://picsum.photos/id/29/300/180" alt="点评图片1" class="rounded-2xl object-cover h-32 shadow">
+                                    <img src="https://picsum.photos/id/30/300/180" alt="点评图片2" class="rounded-2xl object-cover h-32 shadow">
+                                </div>
+                                <div class="mt-4 text-xs flex items-center gap-3 text-blue-600">
+                                    <span>原文</span>
+                                    <span class="cursor-pointer hover:underline">报告翻译问题</span>
+                                    <span class="ml-auto text-gray-400">翻译由AI提供</span>
+                                </div>
+                                <div class="mt-6 flex items-center justify-between text-sm">
+                                    <button onclick="this.classList.toggle('text-[#0066cc]'); alert('已标记为有用！')" class="flex items-center gap-2 text-gray-500 hover:text-[#0066cc]">
+                                        <i class="fa-solid fa-thumbs-up"></i>
+                                        有用
+                                    </button>
+                                    <span class="text-gray-500">2025年3月25日发布</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="text-right text-sm text-gray-500">
-                            最近发布
+                    </div>
+
+                    <!-- 点评3 -->
+                    <div class="review-card border-b pb-12">
+                        <div class="flex gap-6">
+                            <img src="https://i.pravatar.cc/64?u=anonymous" alt="匿名用户" class="w-14 h-14 rounded-full flex-shrink-0">
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <div class="font-semibold text-lg">匿名用户</div>
+                                        <div class="flex flex-wrap gap-x-5 text-sm text-gray-500 mt-1">
+                                            <span>豪华房</span>
+                                            <span>于2025年9月入住</span>
+                                            <span>商务出差</span>
+                                            <span>9条点评</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-[#0066cc] text-white font-bold text-3xl px-6 py-2 rounded-2xl flex items-center gap-2">
+                                        4.5
+                                        <span class="text-base font-medium">很好</span>
+                                    </div>
+                                </div>
+                                <p class="mt-6 text-gray-700 leading-relaxed">
+                                    十分日式的酒店，像是80、90年代日本小型酒店的格局。应该是专门给日本人入住，电视节目也是以日本电视台为主。
+                                </p>
+                                <div class="mt-6 flex items-center justify-between text-sm">
+                                    <button onclick="this.classList.toggle('text-[#0066cc]'); alert('已标记为有用！')" class="flex items-center gap-2 text-gray-500 hover:text-[#0066cc]">
+                                        <i class="fa-solid fa-thumbs-up"></i>
+                                        有用
+                                    </button>
+                                    <span class="text-gray-500">2025年9月19日发布</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="mt-4 text-gray-700 leading-relaxed">
-                        酒店的装修风格像20年前的中国，没有USB充电源，但马桶却是卫洗丽。热水要放水五分钟才能出来。如果你想体验一下怀旧的中国，这里倒是个不错的选择。值得一提的是，这里能收看日本电视节目。
-                    </div>
-                    
-                    <div class="mt-3 text-sm text-gray-500 flex items-center gap-4">
-                        <span>原文 | 报告翻译问题</span>
-                        <span>翻译由AI提供</span>
-                        <span>1条点评</span>
-                    </div>
-                </div>
 
-                <div class="text-center text-gray-500 mt-6">
-                    <button class="border border-gray-300 hover:bg-gray-100 px-8 py-3 rounded-xl">
-                        查看更多点评
-                    </button>
+                    <!-- 点评4 -->
+                    <div class="review-card">
+                        <div class="flex gap-6">
+                            <img src="https://i.pravatar.cc/64?u=fangke2" alt="访客" class="w-14 h-14 rounded-full flex-shrink-0">
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <div class="font-semibold text-lg">访客</div>
+                                        <div class="flex flex-wrap gap-x-5 text-sm text-gray-500 mt-1">
+                                            <span>标准房</span>
+                                            <span>于2025年5月入住</span>
+                                            <span>商务出差</span>
+                                            <span>1条点评</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-[#0066cc] text-white font-bold text-3xl px-6 py-2 rounded-2xl">
+                                        4.0
+                                    </div>
+                                </div>
+                                <p class="mt-6 text-gray-700 leading-relaxed">
+                                    我是日本人，因为工作在这里住了四天。酒店员工会说一点日语，这让我觉得很方便。酒店很干净，饭菜也很好吃，感觉和在日本吃到的食物没什么两样。
+                                </p>
+                                <div class="mt-4 text-xs flex items-center gap-3 text-blue-600">
+                                    <span>原文</span>
+                                    <span class="cursor-pointer hover:underline">报告翻译问题</span>
+                                    <span class="ml-auto text-gray-400">翻译由AI提供</span>
+                                </div>
+                                <div class="mt-6 flex items-center justify-between text-sm">
+                                    <button onclick="this.classList.toggle('text-[#0066cc]'); alert('已标记为有用！')" class="flex items-center gap-2 text-gray-500 hover:text-[#0066cc]">
+                                        <i class="fa-solid fa-thumbs-up"></i>
+                                        有用
+                                    </button>
+                                    <span class="text-gray-500">2025年5月15日发布</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -350,124 +442,186 @@
         <!-- 服务及设施 Tab -->
         <div id="tab-content-3" class="tab-content mt-8 hidden">
             <div class="bg-white p-8 rounded-3xl shadow">
-                <h2 class="text-2xl font-semibold mb-6">设施服务</h2>
+                <h2 class="text-2xl font-semibold mb-8 flex items-center gap-3">
+                    <i class="fa-solid fa-concierge-bell text-[#0066cc]"></i>
+                    设施服务
+                </h2>
 
-                <div class="mb-8">
-                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-concierge-bell text-[#0066cc]"></i> 设施服务
+                <!-- 主要设施网格 -->
+                <div class="facility-grid text-center">
+                    <div class="flex flex-col items-center">
+                        <i class="fa-solid fa-utensils text-4xl text-[#0066cc] mb-3"></i>
+                        <div class="font-medium">餐厅</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <i class="fa-solid fa-dumbbell text-4xl text-[#0066cc] mb-3"></i>
+                        <div class="font-medium">健身室</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <i class="fa-solid fa-spa text-4xl text-[#0066cc] mb-3"></i>
+                        <div class="font-medium">桑拿浴室</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <i class="fa-solid fa-hand-sparkles text-4xl text-[#0066cc] mb-3"></i>
+                        <div class="font-medium">按摩室</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <i class="fa-solid fa-table-tennis-paddle-ball text-4xl text-[#0066cc] mb-3"></i>
+                        <div class="font-medium">乒乓球室</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <i class="fa-solid fa-car text-4xl text-[#0066cc] mb-3"></i>
+                        <div class="font-medium">停车场 <span class="text-green-600 text-xs ml-1 bg-green-100 px-2 py-0.5 rounded">免费</span></div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <i class="fa-solid fa-taxi text-4xl text-[#0066cc] mb-3"></i>
+                        <div class="font-medium">叫车服务</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <i class="fa-solid fa-suitcase text-4xl text-[#0066cc] mb-3"></i>
+                        <div class="font-medium">行李寄存</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <i class="fa-solid fa-chess text-4xl text-[#0066cc] mb-3"></i>
+                        <div class="font-medium">棋牌室</div>
+                    </div>
+                </div>
+
+                <!-- 设施图片 -->
+                <div class="mt-12 grid grid-cols-2 gap-6">
+                    <div>
+                        <img src="https://i.postimg.cc/3NK4PqZz/can-yin-yan-hui1.jpg" alt="餐厅" class="w-full rounded-3xl shadow-md">
+                        <div class="text-center mt-3 text-sm font-medium">餐厅</div>
+                    </div>
+                    <div>
+                        <img src="https://picsum.photos/id/1015/800/450" alt="健身室" class="w-full rounded-3xl shadow-md">
+                        <div class="text-center mt-3 text-sm font-medium">健身室</div>
+                    </div>
+                </div>
+
+                <!-- 更多设施 -->
+                <div class="mt-16">
+                    <h3 class="text-xl font-semibold mb-8 flex items-center gap-3">
+                        <i class="fa-solid fa-circle-info text-[#0066cc]"></i>
+                        更多设施
                     </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-gray-700">
-                        <div>🍴 餐厅</div>
-                        <div>🏋️ 健身室</div>
-                        <div>🧖 桑拿浴室</div>
-                        <div>💆 按摩室</div>
-                        <div>🏓 乒乓球室</div>
-                        <div>🅿️ 停车场 <span class="text-green-600">(免费)</span></div>
-                        <div>✅ 叫车服务</div>
-                        <div>🧳 行李寄存</div>
-                        <div>🎲 棋牌室</div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+                        <!-- 左侧 -->
+                        <div class="space-y-10">
+                            <!-- 交通服务 -->
+                            <div>
+                                <div class="flex items-center gap-3 mb-4">
+                                    <i class="fa-solid fa-car text-2xl text-[#0066cc]"></i>
+                                    <span class="font-semibold text-lg">交通服务</span>
+                                </div>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 代客泊车</div>
+                                </div>
+                            </div>
+
+                            <!-- 前台服务 -->
+                            <div>
+                                <div class="flex items-center gap-3 mb-4">
+                                    <i class="fa-solid fa-receptionist text-2xl text-[#0066cc]"></i>
+                                    <span class="font-semibold text-lg">前台服务</span>
+                                </div>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 前台贵重物品保险柜</div>
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 叫醒服务</div>
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 外币兑换服务</div>
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> VIP通道入住</div>
+                                </div>
+                            </div>
+
+                            <!-- 餐饮服务 -->
+                            <div>
+                                <div class="flex items-center gap-3 mb-4">
+                                    <i class="fa-solid fa-utensils text-2xl text-[#0066cc]"></i>
+                                    <span class="font-semibold text-lg">餐饮服务</span>
+                                </div>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 送餐服务</div>
+                                </div>
+                            </div>
+
+                            <!-- 康体设施 -->
+                            <div>
+                                <div class="flex items-center gap-3 mb-4">
+                                    <i class="fa-solid fa-heart-pulse text-2xl text-[#0066cc]"></i>
+                                    <span class="font-semibold text-lg">康体设施</span>
+                                </div>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 理发美容中心</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 中间 -->
+                        <div class="space-y-10">
+                            <!-- 公共区 -->
+                            <div>
+                                <div class="flex items-center gap-3 mb-4">
+                                    <i class="fa-solid fa-users text-2xl text-[#0066cc]"></i>
+                                    <span class="font-semibold text-lg">公共区</span>
+                                </div>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 吸烟区</div>
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 公用区wifi <span class="text-green-600 text-xs bg-green-100 px-2 py-0.5 rounded">免费</span></div>
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 自动取款机</div>
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 商场</div>
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 公共音响系统</div>
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 无烟楼层</div>
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 电梯</div>
+                                </div>
+                            </div>
+
+                            <!-- 清洁服务 -->
+                            <div>
+                                <div class="flex items-center gap-3 mb-4">
+                                    <i class="fa-solid fa-broom text-2xl text-[#0066cc]"></i>
+                                    <span class="font-semibold text-lg">清洁服务</span>
+                                </div>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 洗衣服务</div>
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 熨衣服务</div>
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 外送洗衣服务</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 右侧 -->
+                        <div class="space-y-10">
+                            <!-- 商务服务 -->
+                            <div>
+                                <div class="flex items-center gap-3 mb-4">
+                                    <i class="fa-solid fa-briefcase text-2xl text-[#0066cc]"></i>
+                                    <span class="font-semibold text-lg">商务服务</span>
+                                </div>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 快递服务</div>
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 多功能厅</div>
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 商务服务</div>
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 会议厅</div>
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 传真/复印</div>
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 婚宴服务</div>
+                                </div>
+                            </div>
+
+                            <!-- 安全与安保 -->
+                            <div>
+                                <div class="flex items-center gap-3 mb-4">
+                                    <i class="fa-solid fa-shield-halved text-2xl text-[#0066cc]"></i>
+                                    <span class="font-semibold text-lg">安全与安保</span>
+                                </div>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-green-600"></i> 公共区域监控</div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <img src="https://i.postimg.cc/示例/餐厅.jpg" alt="餐厅" class="rounded-xl shadow object-cover h-64 w-full">
-                    <img src="https://i.postimg.cc/示例/健身室.jpg" alt="健身室" class="rounded-xl shadow object-cover h-64 w-full">
-                </div>
-
-                <div class="text-sm text-gray-500 mb-8">
-                    <p>餐厅 | 健身室</p>
-                </div>
-
-                <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                    <i class="fa-solid fa-ellipsis-h text-[#0066cc]"></i> 更多设施
-                </h3>
-
-                <div class="space-y-6">
-                    <!-- 交通服务 -->
-                    <div>
-                        <h4 class="font-semibold mb-2">🚗 交通服务</h4>
-                        <ul class="list-disc pl-6 text-gray-700">
-                            <li>代客泊车</li>
-                        </ul>
-                    </div>
-
-                    <!-- 公共区 -->
-                    <div>
-                        <h4 class="font-semibold mb-2">🪑 公共区</h4>
-                        <ul class="list-disc pl-6 text-gray-700">
-                            <li>吸烟区</li>
-                            <li>公用区 WiFi <span class="text-green-600">(免费)</span></li>
-                            <li>自动取款机</li>
-                            <li>商场</li>
-                            <li>公共音响系统</li>
-                            <li>无烟楼层</li>
-                            <li>电梯</li>
-                        </ul>
-                    </div>
-
-                    <!-- 商务服务 -->
-                    <div>
-                        <h4 class="font-semibold mb-2">💼 商务服务</h4>
-                        <ul class="list-disc pl-6 text-gray-700">
-                            <li>快递服务</li>
-                            <li>多功能厅</li>
-                            <li>商务服务</li>
-                            <li>会议厅</li>
-                            <li>传真/复印</li>
-                            <li>婚宴服务</li>
-                        </ul>
-                    </div>
-
-                    <!-- 前台服务 -->
-                    <div>
-                        <h4 class="font-semibold mb-2">🛎️ 前台服务</h4>
-                        <ul class="list-disc pl-6 text-gray-700">
-                            <li>前台贵重物品保险柜</li>
-                            <li>叫醒服务</li>
-                            <li>外币兑换服务</li>
-                            <li>VIP通道入住</li>
-                        </ul>
-                    </div>
-
-                    <!-- 餐饮服务 -->
-                    <div>
-                        <h4 class="font-semibold mb-2">🍽️ 餐饮服务</h4>
-                        <ul class="list-disc pl-6 text-gray-700">
-                            <li>送餐服务</li>
-                        </ul>
-                    </div>
-
-                    <!-- 清洁服务 -->
-                    <div>
-                        <h4 class="font-semibold mb-2">🧼 清洁服务</h4>
-                        <ul class="list-disc pl-6 text-gray-700">
-                            <li>洗衣服务</li>
-                            <li>熨衣服务</li>
-                            <li>外送洗衣服务</li>
-                        </ul>
-                    </div>
-
-                    <!-- 康体设施 -->
-                    <div>
-                        <h4 class="font-semibold mb-2">🏊 康体设施</h4>
-                        <ul class="list-disc pl-6 text-gray-700">
-                            <li>理发美容中心</li>
-                        </ul>
-                    </div>
-
-                    <!-- 安全与安保 -->
-                    <div>
-                        <h4 class="font-semibold mb-2">🛡️ 安全与安保</h4>
-                        <ul class="list-disc pl-6 text-gray-700">
-                            <li>公共区域监控</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="text-center mt-8">
-                    <button class="border border-gray-300 hover:bg-gray-100 px-8 py-3 rounded-xl text-gray-700">
-                        查看更多设施详情
-                    </button>
                 </div>
             </div>
         </div>
@@ -475,433 +629,407 @@
         <!-- 政策 Tab -->
         <div id="tab-content-4" class="tab-content mt-8 hidden">
             <div class="bg-white p-8 rounded-3xl shadow">
-                <h2 class="text-2xl font-semibold mb-6">预订政策</h2>
-                
-                <div class="space-y-8 text-gray-800">
-                    <!-- 入住/离店时间 -->
-                    <div>
-                        <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-clock text-[#0066cc]"></i> 入住/离店时间
-                        </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">入住时间</div>
-                                <div class="text-lg">14:00 后</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">退房时间</div>
-                                <div class="text-lg">12:00 前</div>
-                            </div>
+                <h2 class="text-2xl font-semibold mb-10 flex items-center gap-3">
+                    <i class="fa-solid fa-file-contract text-[#0066cc]"></i>
+                    酒店政策
+                </h2>
+
+                <div class="space-y-12">
+
+                    <!-- 入离时间 -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                        <div class="md:col-span-4 flex items-center gap-3">
+                            <i class="fa-solid fa-clock text-3xl text-[#0066cc]"></i>
+                            <span class="font-semibold text-xl">入离时间</span>
+                        </div>
+                        <div class="md:col-span-8 text-gray-700">
+                            <div class="font-medium">入住时间：</div>
+                            <div class="text-lg">14:00后</div>
+                            <div class="font-medium mt-4">退房时间：</div>
+                            <div class="text-lg">12:00前</div>
                         </div>
                     </div>
 
                     <!-- 预订提示 -->
-                    <div>
-                        <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-info-circle text-[#0066cc]"></i> 预订提示
-                        </h3>
-                        <p class="leading-relaxed">
-                            订单需等酒店或供应商确认后生效，订单确认结果以平台短信、邮件或App通知为准。
-                        </p>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                        <div class="md:col-span-4 flex items-center gap-3">
+                            <i class="fa-solid fa-info-circle text-3xl text-[#0066cc]"></i>
+                            <span class="font-semibold text-xl">预订提示</span>
+                        </div>
+                        <div class="md:col-span-8 text-gray-700 leading-relaxed">
+                            订单需等酒店或供应商确认后生效，订单确认结果以平台短信、邮件或app通知为准。
+                        </div>
                     </div>
 
                     <!-- 入住提示 -->
-                    <div>
-                        <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-door-open text-[#0066cc]"></i> 入住提示
-                        </h3>
-                        <p class="leading-relaxed">
-                            前台服务：24小时营业
-                        </p>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                        <div class="md:col-span-4 flex items-center gap-3">
+                            <i class="fa-solid fa-concierge-bell text-3xl text-[#0066cc]"></i>
+                            <span class="font-semibold text-xl">入住提示</span>
+                        </div>
+                        <div class="md:col-span-8 text-gray-700">
+                            <div class="font-medium">前台服务</div>
+                            <div class="text-lg">前台营业时间: 24小时营业</div>
+                        </div>
                     </div>
 
                     <!-- 接待提示 -->
-                    <div>
-                        <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-id-card text-[#0066cc]"></i> 接待提示
-                        </h3>
-                        <div class="space-y-3">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                        <div class="md:col-span-4 flex items-center gap-3">
+                            <i class="fa-solid fa-user-check text-3xl text-[#0066cc]"></i>
+                            <span class="font-semibold text-xl">接待提示</span>
+                        </div>
+                        <div class="md:col-span-8 text-gray-700 space-y-6">
                             <div>
-                                <div class="font-semibold">年龄限制</div>
-                                <div>入住办理人需年满18岁</div>
+                                <div class="font-medium">年龄限制</div>
+                                <div class="text-lg">入住办理人需年满18岁</div>
                             </div>
                             <div>
-                                <div class="font-semibold">可接待人群</div>
-                                <div>接待来自任何国家/地区的客人</div>
+                                <div class="font-medium">可接待人群</div>
+                                <div class="text-lg">接待来自任何国家/地区的客人</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 宠物政策 -->
-                    <div>
-                        <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-paw text-[#0066cc]"></i> 宠物
-                        </h3>
-                        <p class="text-red-600 font-medium">不可携带宠物</p>
+                    <!-- 宠物 -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                        <div class="md:col-span-4 flex items-center gap-3">
+                            <i class="fa-solid fa-ban text-3xl text-red-500"></i>
+                            <span class="font-semibold text-xl">宠物</span>
+                        </div>
+                        <div class="md:col-span-8 text-gray-700 text-lg">
+                            不可携带宠物
+                        </div>
                     </div>
 
                     <!-- 早餐 -->
-                    <div>
-                        <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-coffee text-[#0066cc]"></i> 早餐
-                        </h3>
-                        <div class="space-y-2">
-                            <div>餐食形式：自助餐，¥50/份</div>
-                            <div>营业时间：每天 06:00–09:00 开放</div>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                        <div class="md:col-span-4 flex items-center gap-3">
+                            <i class="fa-solid fa-utensils text-3xl text-[#0066cc]"></i>
+                            <span class="font-semibold text-xl">早餐</span>
+                        </div>
+                        <div class="md:col-span-8 text-gray-700">
+                            <div><span class="font-medium">餐食形式：</span>自助餐，¥50每份</div>
+                            <div class="mt-2"><span class="font-medium">营业时间：</span>每天06:00-09:00开放</div>
                         </div>
                     </div>
 
                     <!-- 支付方式 -->
-                    <div>
-                        <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-credit-card text-[#0066cc]"></i> 支付方式
-                        </h3>
-                        <div class="flex flex-wrap gap-4 mt-3">
-                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01qW8f1K1wZ0Z0Z0Z0_!!6000000006325-2-tps-120-48.png" alt="UnionPay" class="h-8">
-                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="Diners Club" class="h-8">
-                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="JCB" class="h-8">
-                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="VISA" class="h-8">
-                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="American Express" class="h-8">
-                            <img src="https://img.alicdn.com/imgextra/i1/O1CN01Z0Z0Z0Z0Z0Z0Z0Z_!!6000000000000-2-tps-120-48.png" alt="MasterCard" class="h-8">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                        <div class="md:col-span-4 flex items-center gap-3">
+                            <i class="fa-solid fa-credit-card text-3xl text-[#0066cc]"></i>
+                            <span class="font-semibold text-xl">支付方式</span>
+                        </div>
+                        <div class="md:col-span-8">
+                            <div class="flex flex-wrap gap-x-6 gap-y-4">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/UnionPay_logo.svg/120px-UnionPay_logo.svg.png" alt="银联" class="h-9 object-contain">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Diners_Club_Logo.svg/120px-Diners_Club_Logo.svg.png" alt="Diners Club" class="h-9 object-contain">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/JCB_logo.svg/120px-JCB_logo.svg.png" alt="JCB" class="h-9 object-contain">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Visa_2022.svg/120px-Visa_2022.svg.png" alt="VISA" class="h-9 object-contain">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/American_Express_logo_(2018).svg/120px-American_Express_logo_(2018).svg.png" alt="American Express" class="h-9 object-contain">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/120px-Mastercard-logo.svg.png" alt="Mastercard" class="h-9 object-contain">
+                            </div>
                         </div>
                     </div>
 
-                    <!-- 儿童及加床政策 -->
-                    <div>
-                        <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-child text-[#0066cc]"></i> 儿童及加床
-                        </h3>
-                        <p class="mb-4">欢迎携带儿童入住</p>
-                        
-                        <div class="mb-4">
-                            <div class="font-semibold">婴儿床及加床政策</div>
-                            <p>所有房型可加床、不提供婴儿床</p>
+                    <!-- 儿童及加床 -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                        <div class="md:col-span-4 flex items-center gap-3">
+                            <i class="fa-solid fa-child text-3xl text-[#0066cc]"></i>
+                            <span class="font-semibold text-xl">儿童及加床</span>
                         </div>
-
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full border-collapse">
-                                <thead>
-                                    <tr class="bg-gray-100">
-                                        <th class="border px-4 py-3 text-left">年龄</th>
-                                        <th class="border px-4 py-3 text-left">床铺</th>
-                                        <th class="border px-4 py-3 text-left">费用</th>
+                        <div class="md:col-span-8">
+                            <div class="text-gray-700">欢迎携带儿童入住</div>
+                            <div class="mt-6 font-medium">婴儿床及加床政策</div>
+                            <div class="text-gray-700 mb-6">所有房型可加床、不提供婴儿床</div>
+                            
+                            <table class="w-full border border-gray-200 rounded-2xl overflow-hidden text-sm">
+                                <thead class="bg-gray-100">
+                                    <tr>
+                                        <th class="px-6 py-4 text-left font-medium text-gray-600">年龄</th>
+                                        <th class="px-6 py-4 text-left font-medium text-gray-600">床铺</th>
+                                        <th class="px-6 py-4 text-left font-medium text-gray-600">费用</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="divide-y divide-gray-200">
                                     <tr>
-                                        <td class="border px-4 py-3">17岁及以下</td>
-                                        <td class="border px-4 py-3">使用现有床铺</td>
-                                        <td class="border px-4 py-3 text-green-600">免费</td>
+                                        <td class="px-6 py-5">17岁及以下</td>
+                                        <td class="px-6 py-5">使用现有床铺</td>
+                                        <td class="px-6 py-5 text-green-600 font-semibold">免费</td>
                                     </tr>
                                     <tr>
-                                        <td class="border px-4 py-3">17岁及以下</td>
-                                        <td class="border px-4 py-3">加床</td>
-                                        <td class="border px-4 py-3">¥80/人/晚</td>
+                                        <td class="px-6 py-5">17岁及以下</td>
+                                        <td class="px-6 py-5">加床</td>
+                                        <td class="px-6 py-5">¥80/人·晚</td>
                                     </tr>
                                     <tr>
-                                        <td class="border px-4 py-3">18岁及以上</td>
-                                        <td class="border px-4 py-3">加床</td>
-                                        <td class="border px-4 py-3">¥80/人/晚</td>
+                                        <td class="px-6 py-5">18岁及以上</td>
+                                        <td class="px-6 py-5">加床</td>
+                                        <td class="px-6 py-5">¥80/人·晚</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                </div>
 
-                <div class="mt-10 text-center text-sm text-gray-500">
-                    以上政策以酒店最终确认为准，建议预订前与酒店确认最新信息。
                 </div>
             </div>
         </div>
 
-        <!-- 地点 Tab -->
+        <!-- 地点 Tab（新增内容，完全按照您提供的截图实现） -->
         <div id="tab-content-5" class="tab-content mt-8 hidden">
             <div class="bg-white p-8 rounded-3xl shadow">
-                <h2 class="text-2xl font-semibold mb-6">酒店位置</h2>
-                <p class="text-gray-700 mb-6 leading-relaxed">
-                    平湖绿阳大饭店位于浙江省平湖经济技术开发区昌盛路288号，交通便利，周边景点、美食、购物资源丰富。以下为酒店周边热门推荐（距离以直线或驾车估算为准，实际以地图导航为准）。
-                </p>
+                <h2 class="text-2xl font-semibold mb-10 flex items-center gap-3">
+                    <i class="fa-solid fa-map-location-dot text-[#0066cc]"></i>
+                    周边信息
+                </h2>
 
-                <div class="space-y-10">
-                    <!-- 交通 -->
-                    <div>
-                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-subway text-[#0066cc]"></i> 交通
-                        </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">火车站：嘉善南站</div>
-                                <div>14.5千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">火车站：嘉善站</div>
-                                <div>19.8千米</div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+                    <!-- 左侧：交通 + 购物 -->
+                    <div class="space-y-12">
+
+                        <!-- 交通 -->
+                        <div class="bg-gray-50 p-7 rounded-3xl">
+                            <h3 class="flex items-center gap-4 text-xl font-semibold mb-7">
+                                <i class="fa-solid fa-train text-3xl text-[#0066cc]"></i>
+                                交通
+                            </h3>
+                            <div class="space-y-5 text-sm">
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">火车站: 嘉善南站</span>
+                                    <span class="font-medium text-gray-500">14.5千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">火车站: 嘉善站</span>
+                                    <span class="font-medium text-gray-500">19.8千米</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- 景点 -->
-                    <div>
-                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-landmark text-[#0066cc]"></i> 景点
-                        </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">平湖莫氏庄园</div>
-                                <div>2.9千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">歌斐颂巧克力小镇</div>
-                                <div>8.1千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">东湖景区</div>
-                                <div>3.5千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">伊佳林开心梦工厂(平湖店)</div>
-                                <div>1.5千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">神仙池休闲中心</div>
-                                <div>1.4千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">白马湖</div>
-                                <div>1.9千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">南河头</div>
-                                <div>3千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">平湖FFPARK时尚公园</div>
-                                <div>2千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">平湖市李叔同纪念馆</div>
-                                <div>3.4千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">平湖经济技术开发区文化中心</div>
-                                <div>1.8千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">东湖景区-报本禅寺</div>
-                                <div>3.8千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">2026金平湖灯秀</div>
-                                <div>3.8千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">平湖市博物馆</div>
-                                <div>5千米</div>
+                        <!-- 购物 -->
+                        <div class="bg-gray-50 p-7 rounded-3xl">
+                            <h3 class="flex items-center gap-4 text-xl font-semibold mb-7">
+                                <i class="fa-solid fa-bag-shopping text-3xl text-[#0066cc]"></i>
+                                购物
+                            </h3>
+                            <div class="space-y-5 text-sm">
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">锦杭百货(解放中路店)</span>
+                                    <span class="font-medium text-gray-500">2.5千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">爱尚花艺生活馆</span>
+                                    <span class="font-medium text-gray-500">2.5千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">平湖吾悦广场</span>
+                                    <span class="font-medium text-gray-500">4.9千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">丹丹家羽绒服批发</span>
+                                    <span class="font-medium text-gray-500">1.1千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">平湖国际箱包城</span>
+                                    <span class="font-medium text-gray-500">1.4千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">平湖市农副产品综合批发市场</span>
+                                    <span class="font-medium text-gray-500">1.6千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">精品羽绒馆</span>
+                                    <span class="font-medium text-gray-500">5.4千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">关帝庙商城</span>
+                                    <span class="font-medium text-gray-500">2.4千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">平湖羽绒服市场</span>
+                                    <span class="font-medium text-gray-500">2.1千米</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-700">平湖·中国服装城</span>
+                                    <span class="font-medium text-gray-500">1.9千米</span>
+                                </div>
                             </div>
                         </div>
+
                     </div>
 
-                    <!-- 美食 -->
-                    <div>
-                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-utensils text-[#0066cc]"></i> 美食
-                        </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">平湖绿阳大饭店（酒店内）</div>
-                                <div><100米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">阿香米线(平湖大润发店)</div>
-                                <div>2.3千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">老平湖(城南西路店)</div>
-                                <div>2千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">肯德基(平湖新华店)</div>
-                                <div>2.5千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">老娘舅(平湖店)</div>
-                                <div>2.4千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">五芳斋(新华中路店)</div>
-                                <div>2.5千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">汉堡小子(大润发店)</div>
-                                <div>2.3千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">索菲克牛排(平湖店)</div>
-                                <div>2.3千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">韩国馆(城北店)</div>
-                                <div>1.3千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">美利家(兴平店)</div>
-                                <div>1.2千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">东北靓仔羊腿(兴平路店)</div>
-                                <div>1.2千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">松岛</div>
-                                <div>1.3千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">南海渔村(祥中路十年老店)</div>
-                                <div>4千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">维多利蛋糕世界(白马店)</div>
-                                <div>1.3千米</div>
+                    <!-- 右侧：景点 + 美食 -->
+                    <div class="space-y-12">
+
+                        <!-- 景点 -->
+                        <div class="bg-gray-50 p-7 rounded-3xl">
+                            <h3 class="flex items-center gap-4 text-xl font-semibold mb-7">
+                                <i class="fa-solid fa-camera text-3xl text-[#0066cc]"></i>
+                                景点
+                            </h3>
+                            <div class="space-y-5 text-sm">
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">平湖莫氏庄园</span>
+                                    <span class="font-medium text-gray-500">2.9千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">歌斐颂巧克力小镇</span>
+                                    <span class="font-medium text-gray-500">8.1千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">东湖景区</span>
+                                    <span class="font-medium text-gray-500">3.5千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">伊佳林开心梦工场(平湖店)</span>
+                                    <span class="font-medium text-gray-500">1.5千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">神仙池休闲中心</span>
+                                    <span class="font-medium text-gray-500">1.4千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">白马湖</span>
+                                    <span class="font-medium text-gray-500">1.9千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">南河头</span>
+                                    <span class="font-medium text-gray-500">3千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">平湖FFPARK时尚公园</span>
+                                    <span class="font-medium text-gray-500">2千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">平湖市李叔同纪念馆</span>
+                                    <span class="font-medium text-gray-500">3.4千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">平湖经济技术开发区文化中心</span>
+                                    <span class="font-medium text-gray-500">1.8千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">东湖景区-报本禅寺</span>
+                                    <span class="font-medium text-gray-500">3.8千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">2026金平湖灯秀</span>
+                                    <span class="font-medium text-gray-500">3.8千米</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-700">平湖市博物馆</span>
+                                    <span class="font-medium text-gray-500">5千米</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- 购物 -->
-                    <div>
-                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-shopping-bag text-[#0066cc]"></i> 购物
-                        </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">锦杭百货(解放中路店)</div>
-                                <div>2.5千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">爱尚花艺生活馆</div>
-                                <div>2.5千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">平湖吾悦广场</div>
-                                <div>4.9千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">丹丹家羽绒服批发</div>
-                                <div>1.1千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">平湖国际箱包城</div>
-                                <div>1.4千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">平湖市农副产品综合批发市场</div>
-                                <div>1.6千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">精品羽绒馆</div>
-                                <div>5.4千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">关帝庙商城</div>
-                                <div>2.4千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">平湖羽绒服务市场</div>
-                                <div>2.1千米</div>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-xl">
-                                <div class="font-semibold">平湖·中国服装城</div>
-                                <div>1.9千米</div>
+                        <!-- 美食 -->
+                        <div class="bg-gray-50 p-7 rounded-3xl">
+                            <h3 class="flex items-center gap-4 text-xl font-semibold mb-7">
+                                <i class="fa-solid fa-utensils text-3xl text-[#0066cc]"></i>
+                                美食
+                            </h3>
+                            <div class="space-y-5 text-sm">
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">平湖绿阳大饭店</span>
+                                    <span class="font-medium text-green-600">&lt;100米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">阿香米线(平湖大润发店)</span>
+                                    <span class="font-medium text-gray-500">2.3千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">老平湖(城南西路店)</span>
+                                    <span class="font-medium text-gray-500">2千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">肯德基(平湖新华店)</span>
+                                    <span class="font-medium text-gray-500">2.5千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">老娘舅(平湖店)</span>
+                                    <span class="font-medium text-gray-500">2.4千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">五芳斋(新华中路店)</span>
+                                    <span class="font-medium text-gray-500">2.5千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">汉堡小子(大润发店)</span>
+                                    <span class="font-medium text-gray-500">2.3千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">索菲克牛排(平湖店)</span>
+                                    <span class="font-medium text-gray-500">2.3千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">韩国馆(城北店)</span>
+                                    <span class="font-medium text-gray-500">1.3千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">美丽家族(兴平店)</span>
+                                    <span class="font-medium text-gray-500">1.2千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">东北鞑子羊腿(兴平路店)</span>
+                                    <span class="font-medium text-gray-500">1.2千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">松岛</span>
+                                    <span class="font-medium text-gray-500">1.3千米</span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-4">
+                                    <span class="text-gray-700">南海渔村(祥中路十年老店)</span>
+                                    <span class="font-medium text-gray-500">4千米</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-700">维多利蛋糕世界(白马店)</span>
+                                    <span class="font-medium text-gray-500">1.3千米</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="mt-10 text-center text-sm text-gray-500">
-                    以上距离为参考值，实际出行建议使用高德/百度地图导航。酒店提供免费停车，欢迎自驾。
+                    </div>
+
                 </div>
             </div>
         </div>
 
     </div>
-
 </div>
 
-<!-- 弹窗部分（豪华套房示例，其余类似可自行补充） -->
-<div id="suiteModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('suiteModal')">×</span>
-        <h2 class="text-3xl font-bold mb-6 text-center">豪华套房 照片（自动轮播）</h2>
-        <div class="carousel-container" id="suiteCarousel">
-            <div class="carousel" id="suiteSlides">
-                <img src="https://i.postimg.cc/htMc09Y3/0201g120000atxdvd8D9A_R_600_400_R5.webp" alt="1">
-                <img src="https://i.postimg.cc/XYx4gwPz/0203l120000atx4jz88FA_R_600_400_R5.webp" alt="2">
-                <img src="https://i.postimg.cc/L8v2VzW7/0204w120000atx8hq58B4_R_600_400_R5.webp" alt="3">
-                <img src="https://i.postimg.cc/y8nsTFGG/0205l120000atxaw136A2_R_600_400_R5.webp" alt="4">
-                <img src="https://i.postimg.cc/fR5DvxP1/0206y120000atx5h225F7_R_600_400_R5.webp" alt="5">
-                <img src="https://i.postimg.cc/jSvthz1p/02070120000atxck54364_R_600_400_R5.webp" alt="6">
-                <img src="https://i.postimg.cc/g24mKv7f/c6819662f9d642269877fb96c81ed216_R_600_400_R5.webp" alt="7">
-            </div>
-        </div>
-        <div class="carousel-dots" id="suiteDots"></div>
-    </div>
-</div>
-
-<!-- 底部 -->
 <footer class="mt-16 bg-gray-900 text-white py-12">
     <div class="max-w-7xl mx-auto px-6 text-xs text-gray-400">
-        <div class="flex justify-between border-b border-gray-700 pb-8">
+        <div class="flex justify-between border-b border-gray-700 pb-8 flex-wrap gap-4">
             <div>地址：浙江省平湖经济技术开发区昌盛路288号</div>
             <div>电话：+86-573-85071999</div>
             <div>酒店官方联系方式：0573-8507-1808 | info@nidec-ntfczj.com</div>
         </div>
-        <div class="mt-6 flex justify-center gap-8">
+        <div class="mt-6 flex justify-center gap-8 flex-wrap">
             <a href="#" class="hover:text-white">关于我们</a>
             <a href="#" class="hover:text-white">用户协议</a>
             <a href="#" class="hover:text-white">隐私政策</a>
         </div>
-        <div class="text-center mt-8 text-[10px]">© 2026 平湖绿阳大饭店演示网站（基于携程2026年3月页面）</div>
+        <div class="text-center mt-8 text-[10px]">© 2026 平湖绿阳大饭店演示网站</div>
     </div>
 </footer>
 
 <script>
-// Tab 切换 - 事件委托
 document.addEventListener('click', e => {
     const link = e.target.closest('.tab-link');
     if (!link) return;
     e.preventDefault();
 
-    const allLinks = document.querySelectorAll('.tab-link');
-    const index = Array.from(allLinks).indexOf(link);
-    if (index === -1) return;
-
-    allLinks.forEach(l => l.classList.remove('tab-active'));
+    document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('tab-active'));
     document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
 
     link.classList.add('tab-active');
-    const content = document.getElementById(`tab-content-${index}`);
-    if (content) content.classList.remove('hidden');
+    const idx = link.getAttribute('data-tab');
+    document.getElementById(`tab-content-${idx}`)?.classList.remove('hidden');
 });
 
-// 模态框控制
-function openModal(modalId) {
-    document.getElementById(modalId).style.display = "block";
-}
-
-function closeModal(modalId) {
-    document.getElementById(modalId).style.display = "none";
-}
-
-window.onclick = function(event) {
-    if (event.target.classList.contains('modal')) {
-        closeModal(event.target.id);
-    }
-};
-
-// 默认激活概览
-window.addEventListener('load', () => {
-    document.querySelector('.tab-link').click();
-});
+document.querySelector('[data-tab="0"]').click();
 </script>
 
 </body>
